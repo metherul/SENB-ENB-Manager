@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="SENB_ENB_Manager.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:SENB_ENB_Manager"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <!-- 
+        TODO:
+        Hook up add preset button to actually add a preset. Make it display a context menu as well.
+    -->
+    <Grid>
+        <!-- UI Header Color -->
+        <materialDesign:ColorZone Mode="PrimaryMid" Height="50">
+            <Grid>
+                <!-- Open Settings Button -->
+                <Button Style="{StaticResource MaterialDesignToolButton}"
+                            VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="40" Margin="0,0,5,0"
+                            DataContext="{StaticResource TransitionHandler}"
+                            Command="{Binding ChangeViewCommand}"
+                            CommandParameter="1">
+                    <materialDesign:PackIcon Kind="Settings" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                </Button>
+            </Grid>
+        </materialDesign:ColorZone>
+
+        <!-- Add preset button. -->
+        <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="47" Width="47"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="10,26,0,0"
+                    Command="{Binding AddCardCommand}">
+            <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" />
+        </Button>
+
+        <ScrollViewer Height="539" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0">
+            <ItemsControl ItemsSource="{Binding Cards}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <local:CardControl></local:CardControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        
+    </Grid>
+</UserControl>

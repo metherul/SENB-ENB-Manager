@@ -1,0 +1,57 @@
+﻿<Window x:Class="SENB_ENB_Manager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SENB_ENB_Manager"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        mc:Ignorable="d"
+        Height="618"
+        Width="408"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Title="SENB">
+
+    <!-- All controls are overlays that are positioned underneath the main window header. The Stack Panel positions them in the correct spot. -->
+    
+    <DockPanel>
+        <!-- Window Header Color -->
+        <materialDesign:ColorZone Mode="PrimaryDark" Height="Auto" MouseDown="ColorZone_MouseDown" DockPanel.Dock="Top">
+            <Grid>
+                <!-- Close Window Button -->
+                <Button Style="{StaticResource MaterialDesignToolButton}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="25" Width="25" Click="CloseWindow_Click">
+                    <materialDesign:PackIcon Kind="WindowClose" Foreground="{DynamicResource MaterialDesignPaper}" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
+
+                <!-- Minimize Window Button -->
+                <Button Style="{StaticResource MaterialDesignToolButton}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="25" Width="25" Margin="0,5,21,-5" Click="MinimizeWindow_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="{DynamicResource MaterialDesignPaper}" Width="17" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Button>
+            </Grid>
+        </materialDesign:ColorZone>
+
+        <!-- Main View Manager for the application. -->
+        <!-- Add a bit of a negative margin to remove the white line. -->
+        <!-- The selected index will be bound to the MainWindowViewModel, and handled in code. -->
+        <materialDesign:Transitioner Margin="0,-1,0,0"
+                                     DataContext="{StaticResource TransitionHandler}"
+                                     SelectedIndex="{Binding CurrentViewIndex}">
+
+            <local:MainView />
+            <!-- Index 0 - Main View Control, contains preset cards. -->
+            <local:SettingsView />
+            <!-- Index 1 - Settings View Control, contains application settings. -->
+            <local:EditBinariesView />
+            <!-- Index 2 - Edit Binaries View Control, contains binary editing tools. -->
+        </materialDesign:Transitioner>
+        
+        
+    </DockPanel>
+</Window>
