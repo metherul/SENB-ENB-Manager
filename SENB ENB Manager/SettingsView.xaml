@@ -30,7 +30,7 @@
                 <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,0,0,0" 
                         DataContext="{StaticResource TransitionHandler}"
                         Command="{Binding ChangeViewCommand}"
-                        CommandParameter="0">
+                        CommandParameter="MainView">
                     <materialDesign:PackIcon Kind="ArrowLeft" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" />
                 </Button>
             </materialDesign:ColorZone>
@@ -58,7 +58,10 @@
                     <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                 </StackPanel>
                 <ToggleButton HorizontalAlignment="Right" />
-                <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Margin="0,0,40,0">
+                <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Margin="0,0,40,0"
+                        DataContext="{StaticResource TransitionHandler}"
+                        Command="{Binding ChangeViewCommand}"
+                        CommandParameter="EditGlobalIniView">
                     <materialDesign:PackIcon Kind="Settings" Height="Auto" Width="30"/>
                 </Button>
             </Grid>
@@ -83,7 +86,7 @@
                 <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Height="Auto" Width="60"
                         DataContext="{StaticResource TransitionHandler}"
                         Command="{Binding ChangeViewCommand}"
-                        CommandParameter="2">
+                        CommandParameter="EditBinariesView">
                     <materialDesign:PackIcon Kind="ChevronRight" Height="Auto" Width="30"/>
                 </Button>
             </Grid>

@@ -1,12 +1,17 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using PropertyChanged;
-using System;
 
 namespace SENB_ENB_Manager
 {
     [ImplementPropertyChanged]
     class TransitionHandler
     {
+        // Index Directory
+        // 0 - MainView
+        // 1 - SettingsView
+        // 2 - EditBinariesView
+        // 3 - EditGlobalIniView
+
         // Sets the current focused UserControl
         public int CurrentViewIndex { get; set; }
 
@@ -19,9 +24,15 @@ namespace SENB_ENB_Manager
             ChangeViewCommand = new RelayCommand<object>(SetCurrentView);
         }
 
+        // Sets the current selected UserControl
         public void SetCurrentView(object parameter)
         {
-            CurrentViewIndex = Convert.ToInt32(parameter);
+            var selectedView = parameter.ToString();
+
+            if (selectedView == "MainView") CurrentViewIndex = 0;
+            else if (selectedView == "SettingsView") CurrentViewIndex = 1;
+            else if (selectedView == "EditBinariesView") CurrentViewIndex = 2;
+            else if (selectedView == "EditGlobalIniView") CurrentViewIndex = 3;
         }
     }
 }

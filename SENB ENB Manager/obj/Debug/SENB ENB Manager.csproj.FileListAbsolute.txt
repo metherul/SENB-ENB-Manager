@@ -39,3 +39,5 @@ C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\SettingsV
 C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\SettingsView.baml
 C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\EditBinariesView.g.cs
 C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\EditBinariesView.baml
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\EditGlobalIniView.g.cs
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\EditGlobalIniView.baml

@@ -50,6 +50,8 @@
             <!-- Index 1 - Settings View Control, contains application settings. -->
             <local:EditBinariesView />
             <!-- Index 2 - Edit Binaries View Control, contains binary editing tools. -->
+            <local:EditGlobalIniView />
+            <!-- Index 3 - Edit Global INI View, contains tools to edit the global ini. -->
         </materialDesign:Transitioner>
         
         

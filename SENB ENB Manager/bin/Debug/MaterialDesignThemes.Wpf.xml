@@ -102,31 +102,6 @@
                 2) DateTime? Calendar.SelectedDate
             </remarks>
         </member>
-        <member name="T:MaterialDesignThemes.Wpf.Converters.ListViewGridViewConverter">
-            <summary>
-            Helps coerce the correct item container style for a <see cref="T:System.Windows.Controls.ListView"/>, according to whether the list is displaying in standard mode, or using a <see cref="P:System.Windows.Controls.ListView.View"/>, such as a <see cref="T:System.Windows.Controls.GridView"/>.
-            </summary>
-        </member>
-        <member name="P:MaterialDesignThemes.Wpf.Converters.ListViewGridViewConverter.DefaultValue">
-            <summary>
-            Item container style to use when <see cref="P:System.Windows.Controls.ListView.View"/> is <c>null</c>.
-            </summary>
-        </member>
-        <member name="P:MaterialDesignThemes.Wpf.Converters.ListViewGridViewConverter.ViewValue">
-            <summary>
-            Item container style to use when <see cref="P:System.Windows.Controls.ListView.View"/> is not <c>null</c>, typically when a <see cref="T:System.Windows.Controls.GridView"/> is applied.
-            </summary>
-        </member>
-        <member name="M:MaterialDesignThemes.Wpf.Converters.ListViewGridViewConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            Returns the item container <see cref="T:System.Windows.Style"/> to use for a <see cref="T:System.Windows.Controls.ListView"/>.
-            </summary>
-            <param name="value">Should be a <see cref="T:System.Windows.Controls.ListView"/> or <see cref="T:System.Windows.Controls.ViewBase"/> instance.</param>
-            <param name="targetType"></param>
-            <param name="parameter"></param>
-            <param name="culture"></param>
-            <returns></returns>
-        </member>
         <member name="T:MaterialDesignThemes.Wpf.Converters.HintProxyFabricConverter">
             <summary>
             Converter for <see cref="T:MaterialDesignThemes.Wpf.SmartHint"/> control. Can be extended by <see cref="M:MaterialDesignThemes.Wpf.HintProxyFabric.RegisterBuilder(System.Func{System.Windows.Controls.Control,System.Boolean},System.Func{System.Windows.Controls.Control,MaterialDesignThemes.Wpf.IHintProxy})"/> method.
@@ -617,22 +592,6 @@
             Provides full information about a palette.
             </summary>
         </member>
-        <member name="T:MaterialDesignThemes.Wpf.Plane3D">
-            <summary>
-            View a control on a 3D plane.    
-            </summary>
-            <remarks>
-            Taken from http://blogs.msdn.com/greg_schechter/archive/2007/10/26/enter-the-planerator-dead-simple-3d-in-wpf-with-a-stupid-name.aspx , Greg Schechter - Fall 2007
-            </remarks>
-        </member>
-        <member name="T:MaterialDesignThemes.Wpf.Plane3D.LayoutInvalidationCatcher">
-            <summary>
-            Wrap this around a class that we want to catch the measure and arrange 
-            processes occuring on, and propagate to the parent Planerator, if any.
-            Do this because layout invalidations don't flow up out of a 
-            Viewport2DVisual3D object.
-            </summary>
-        </member>
         <member name="T:MaterialDesignThemes.Wpf.ScaleHost">
             <summary>
             Internal use only.
@@ -713,11 +672,6 @@
         <member name="F:MaterialDesignThemes.Wpf.Transitions.Transitioner.MoveLastCommand">
             <summary>
             Moves to the last slide.
-            </summary>
-        </member>
-        <member name="P:MaterialDesignThemes.Wpf.Transitions.Transitioner.AutoApplyTransitionOrigins">
-            <summary>
-            If enabled, trnaisiotns origins will be applied to wipes, according to where a transition was triggered from.  For example, the mouse point where a user clicks a button.
             </summary>
         </member>
         <member name="T:MaterialDesignThemes.Wpf.Transitions.TransitionerSlide">
@@ -1239,6 +1193,36 @@
         <member name="M:MaterialDesignThemes.Wpf.ValidationAssist.GetSuppress(System.Windows.DependencyObject)">
             <summary>
             Framework use only.
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>
