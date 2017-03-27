@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:SENB_ENB_Manager"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
              TextElement.FontWeight="Regular"
@@ -14,34 +14,41 @@
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    
-    <materialDesign:Card Margin="5" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="{DynamicResource MaterialDesignPaper}">
-        <Grid>
-            <!-- Back Button -->
-            <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"
-                    DataContext="{StaticResource TransitionHandler}"
-                    Command="{Binding ChangeViewCommand}"
-                    CommandParameter="SettingsView">
-                <materialDesign:PackIcon Kind="ArrowLeft" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
-            </Button>
 
-            <StackPanel>
-                <!-- Header Text -->
-                <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Global .ini</Label>
+    <materialDesign:DialogHost DataContext="{StaticResource DialogHandler}" IsOpen="{Binding IsEditGlobalIniViewVisible}" Margin="0,-0.3,0,0">
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Height="580" Width="398">
+                <!-- Back Button -->
+                <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"
+                    DataContext="{StaticResource DialogHandler}"
+                    Command="{Binding ChangeVisibilityCommand}"
+                    CommandParameter="EditGlobalIniView">
+                    <materialDesign:PackIcon Kind="ArrowLeft" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
+                </Button>
 
-                <!-- Instruction Text -->
-                <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Paste or edit the .ini file you would like to install for all presets.</TextBlock>
+                <!-- Help Button -->
+                <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top"
+                        DataContext="{StaticResource SettingsViewModel}" Command="{Binding OpenIniHelpCommand}">
+                    <materialDesign:PackIcon Kind="HelpCircleOutline" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
+                </Button>
 
-            </StackPanel>
+                <StackPanel>
+                    <!-- Header Text -->
+                    <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Global .ini</Label>
 
-            <!-- Text Box -->
-            <RichTextBox Margin="5,80,5,5" FontSize="13" VerticalScrollBarVisibility="Visible" AcceptsTab="True">
-                <RichTextBox.Resources>
-                    <Style TargetType="{x:Type Paragraph}">
-                        <Setter Property="Margin" Value="1"/>
-                    </Style>
-                </RichTextBox.Resources>
-            </RichTextBox>
-        </Grid>
-    </materialDesign:Card>
+                    <!-- Instruction Text -->
+                    <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Paste or edit the .ini file you would like to install for all presets.</TextBlock>
+
+                </StackPanel>
+
+                <!-- Text Box for editing the Global ini -->
+                <avalonEdit:TextEditor Margin="10,80,10,10" FontSize="13" SyntaxHighlighting="C#" HorizontalScrollBarVisibility="Hidden" BorderThickness="0" ShowLineNumbers="True"
+                                       DataContext="{StaticResource SettingsViewModel}"
+                                       Document="{Binding GlobalIniText}">
+
+                </avalonEdit:TextEditor>
+
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+    </materialDesign:DialogHost>
 </UserControl>

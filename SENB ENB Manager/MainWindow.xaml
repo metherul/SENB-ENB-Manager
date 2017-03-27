@@ -45,15 +45,14 @@
                                      SelectedIndex="{Binding CurrentViewIndex}">
 
             <local:MainView />
-            <!-- Index 0 - Main View Control, contains preset cards. -->
+            <!--Index 0 - Main View Control, contains preset cards.-->
             <local:SettingsView />
-            <!-- Index 1 - Settings View Control, contains application settings. -->
+            <!--Index 1 - Settings View Control, contains application settings.-->
             <local:EditBinariesView />
-            <!-- Index 2 - Edit Binaries View Control, contains binary editing tools. -->
+            <!--Index 2 - Edit Binaries View Control, contains binary editing tools.-->
             <local:EditGlobalIniView />
-            <!-- Index 3 - Edit Global INI View, contains tools to edit the global ini. -->
+            <!--Index 3 - Edit Global INI View, contains tools to edit the global ini.-->
         </materialDesign:Transitioner>
-        
-        
+
     </DockPanel>
 </Window>

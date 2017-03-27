@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="SENB_ENB_Manager.AddPresetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:SENB_ENB_Manager"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="14"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+             mc:Ignorable="d"
+             d:DesignHeight="618" d:DesignWidth="408">
+    <Grid >
+
+        <StackPanel>
+            <!-- Header Text -->
+            <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Create Preset</Label>
+
+            <!-- Instruction Text -->
+            <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Put something here that describes what the heck is going on with this dialog box</TextBlock>
+
+        </StackPanel>
+
+        <Grid Margin="0,100,0,0">
+            <TreeView Width="Auto" Margin="5">
+                <TreeViewItem>
+                    <TreeViewItem.Header>
+                        <Grid>
+                            <CheckBox></CheckBox>
+                            <Label Margin="20,0,0,0">Test</Label>
+                        </Grid>
+                    </TreeViewItem.Header>
+                    <Grid>
+                        <CheckBox></CheckBox>
+                        <Label Margin="20,0,0,0">Some Item</Label>
+                    </Grid>
+                    <Grid>
+                        <CheckBox></CheckBox>
+                        <Label Margin="20,0,0,0">Some Other Item</Label>
+                    </Grid>
+                    <TreeViewItem>
+                        <TreeViewItem.Header>
+                            <Grid>
+                                <CheckBox></CheckBox>
+                                <Label Margin="20,0,0,0">Directory 2</Label>
+                            </Grid>
+                        </TreeViewItem.Header>
+                        <Grid>
+                            <CheckBox></CheckBox>
+                            <Label Margin="20,0,0,0">Files that go in it</Label>
+                        </Grid>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <Grid>
+                                    <CheckBox></CheckBox>
+                                    <Label Margin="20,0,0,0">Directory 3</Label>
+                                </Grid>
+                            </TreeViewItem.Header>
+                            <Grid>
+                                <CheckBox></CheckBox>
+                                <Label Margin="20,0,0,0">Oh jeez this is a bit bigger than I thought</Label>
+                            </Grid>
+                            <TreeViewItem>
+                                <TreeViewItem.Header>
+                                    <Grid>
+                                        <CheckBox></CheckBox>
+                                        <Label Margin="20,0,0,0">Directory 4</Label>
+                                    </Grid>
+                                </TreeViewItem.Header>
+                                <Grid>
+                                    <CheckBox></CheckBox>
+                                    <Label Margin="20,0,0,0">That's alright, TreeViews have scrollbars!</Label>
+                                </Grid>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeView>
+        </Grid>
+
+    </Grid>
+</UserControl>

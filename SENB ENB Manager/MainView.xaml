@@ -37,7 +37,9 @@
         <!-- Add preset button. -->
         <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="47" Width="47"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="10,26,0,0"
-                    Command="{Binding AddCardCommand}">
+                    DataContext="{StaticResource DialogHandler}"
+                    Command="{Binding ChangeVisibilityCommand}"
+                    CommandParameter="AddPresetView">
             <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" />
         </Button>
 

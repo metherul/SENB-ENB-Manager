@@ -41,3 +41,11 @@ C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\EditBinar
 C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\EditBinariesView.baml
 C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\EditGlobalIniView.g.cs
 C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\EditGlobalIniView.baml
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\AddPresetView.g.cs
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\obj\Debug\AddPresetView.baml
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\bin\Debug\ICSharpCode.AvalonEdit.xml
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\bin\Debug\MaterialDesignColors.pdb
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\bin\Debug\ICSharpCode.AvalonEdit.pdb
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\bin\Debug\JsonFx.dll
+C:\Programming\C# Projects\SENB ENB Manager\SENB ENB Manager\bin\Debug\JsonFx.xml

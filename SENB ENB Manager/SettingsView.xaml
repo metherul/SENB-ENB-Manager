@@ -22,6 +22,10 @@
         Set up Global ENB Local edit view
         Force user to setup Game Directory on startup if it does not exist.
     -->
+
+    <UserControl.DataContext>
+        <local:SettingsViewModel />
+    </UserControl.DataContext>
     
     <Grid>
         <StackPanel>
@@ -42,7 +46,7 @@
             <StackPanel Margin="20,0">
                 <Label HorizontalAlignment="Center" FontSize="18">Game Directory</Label>
                 <Grid>
-                    <TextBox Margin="25,0"></TextBox>
+                    <TextBox Margin="25,0" Text="{Binding GameLocation, Mode=TwoWay}"></TextBox>
                     <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Width="23" VerticalContentAlignment="Bottom" >
                         <materialDesign:PackIcon Kind="DotsHorizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0" Height="23" Width="23" />
                     </Button>
@@ -57,23 +61,13 @@
                     <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Enable or disable the global enblocal.ini</Label>
                     <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                 </StackPanel>
-                <ToggleButton HorizontalAlignment="Right" />
+                <ToggleButton HorizontalAlignment="Right" IsChecked="{Binding IsUsingGlobalIni, Mode=TwoWay}"/>
                 <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Margin="0,0,40,0"
-                        DataContext="{StaticResource TransitionHandler}"
-                        Command="{Binding ChangeViewCommand}"
+                        DataContext="{StaticResource DialogHandler}"
+                        Command="{Binding ChangeVisibilityCommand}"
                         CommandParameter="EditGlobalIniView">
-                    <materialDesign:PackIcon Kind="Settings" Height="Auto" Width="30"/>
+                    <materialDesign:PackIcon Kind="Pencil" Height="Auto" Width="30"/>
                 </Button>
-            </Grid>
-
-            <!-- Setting - Disable or Enable animations -->
-            <Grid Margin="20,0">
-                <StackPanel Height="Auto" >
-                    <Label FontSize="18" Margin="0,5,0,-5">Use Animations</Label>
-                    <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Disable animations for better performance.</Label>
-                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
-                </StackPanel>
-                <ToggleButton HorizontalAlignment="Right" />
             </Grid>
 
             <!-- Setting - Edit ENB Binaries -->
@@ -84,8 +78,8 @@
                     <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                 </StackPanel>
                 <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Height="Auto" Width="60"
-                        DataContext="{StaticResource TransitionHandler}"
-                        Command="{Binding ChangeViewCommand}"
+                        DataContext="{StaticResource DialogHandler}"
+                        Command="{Binding ChangeVisibilityCommand}"
                         CommandParameter="EditBinariesView">
                     <materialDesign:PackIcon Kind="ChevronRight" Height="Auto" Width="30"/>
                 </Button>
