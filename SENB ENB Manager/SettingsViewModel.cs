@@ -10,6 +10,7 @@ namespace SENB_ENB_Manager
     public class SettingsViewModel
     {
         public RelayCommand OpenIniHelpCommand { get; set; }
+        public RelayCommand SaveSettingsCommand { get; set; }
 
         public string GameLocation { get; set; }
         public bool IsUsingGlobalIni { get; set; }
@@ -17,7 +18,8 @@ namespace SENB_ENB_Manager
 
         public SettingsViewModel()
         {
-            OpenIniHelpCommand = new RelayCommand(SomeRandomMethod);
+            OpenIniHelpCommand = new RelayCommand(OpenIniHelp);
+            SaveSettingsCommand = new RelayCommand(SaveSettings);
 
             GameLocation = (string)ReadSettings.Read(SettingTypes.GameLocation);
             IsUsingGlobalIni = (bool)ReadSettings.Read(SettingTypes.IsUsingGlobalIni);
@@ -27,11 +29,10 @@ namespace SENB_ENB_Manager
             };
         }
 
-        public void SomeRandomMethod()
+        // Save settings on user exit.
+        ~SettingsViewModel()
         {
-            SaveSettings.Save(SettingTypes.GameLocation, GameLocation);
-            SaveSettings.Save(SettingTypes.IsUsingGlobalIni, IsUsingGlobalIni);
-            SaveSettings.Save(SettingTypes.GlobalIniText, GlobalIniText.Text);
+            Domain.SaveSettings.Apply();
         }
 
         public void OpenIniHelp()
@@ -39,6 +40,13 @@ namespace SENB_ENB_Manager
             var wikiURL = @"http://wiki.step-project.com/Guide:ENBlocal_INI";
 
             Process.Start(wikiURL);
+        }
+
+        public void SaveSettings()
+        {
+            Domain.SaveSettings.Save(SettingTypes.GameLocation, GameLocation);
+            Domain.SaveSettings.Save(SettingTypes.IsUsingGlobalIni, IsUsingGlobalIni);
+            Domain.SaveSettings.Save(SettingTypes.GlobalIniText, GlobalIniText.Text);
         }
     }
 }

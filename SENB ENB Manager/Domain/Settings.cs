@@ -41,10 +41,11 @@ namespace SENB_ENB_Manager.Domain
 
                 File.WriteAllText(globalIniLocation, (string)contents);
             }
+        }
 
-            // Save just in case ;)
+        public static void Apply()
+        {
             Settings.Default.Save();
-            Settings.Default.Reload();
         }
     }
 

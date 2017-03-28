@@ -31,12 +31,19 @@
         <StackPanel>
             <!-- UI Header and Back Button -->
             <materialDesign:ColorZone Mode="PrimaryMid" Height="50">
-                <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,0,0,0" 
-                        DataContext="{StaticResource TransitionHandler}"
-                        Command="{Binding ChangeViewCommand}"
-                        CommandParameter="MainView">
-                    <materialDesign:PackIcon Kind="ArrowLeft" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" />
-                </Button>
+                <Grid>
+                    <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,0,0,0" 
+                            DataContext="{StaticResource TransitionHandler}"
+                            Command="{Binding ChangeViewCommand}"
+                            CommandParameter="MainView">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" />
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignToolButton}"
+                            VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="40" Margin="0,0,5,0"
+                            Command="{Binding SaveSettingsCommand}">
+                        <materialDesign:PackIcon Kind="ContentSave" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                    </Button>
+                </Grid>
             </materialDesign:ColorZone>
 
             <!-- Header Text -->

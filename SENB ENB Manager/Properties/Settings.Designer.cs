@@ -37,7 +37,6 @@ namespace SENB_ENB_Manager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool IsUsingGlobalIni {
             get {
                 return ((bool)(this["IsUsingGlobalIni"]));

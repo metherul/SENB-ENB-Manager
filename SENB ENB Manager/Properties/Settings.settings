@@ -6,7 +6,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsUsingGlobalIni" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="GlobalIniLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">data\enblocal.global</Value>
