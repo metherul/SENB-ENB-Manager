@@ -13,40 +13,36 @@ namespace SENB_ENB_Manager
         public RelayCommand SaveSettingsCommand { get; set; }
 
         public string GameLocation { get; set; }
-        public bool IsUsingGlobalIni { get; set; }
+        public bool UsingGlobalIni { get; set; }
         public TextDocument GlobalIniText { get; set; }
 
         public SettingsViewModel()
         {
             OpenIniHelpCommand = new RelayCommand(OpenIniHelp);
-            SaveSettingsCommand = new RelayCommand(SaveSettings);
+            SaveSettingsCommand = new RelayCommand(SaveAllSettings, SaveSettingsCommandEnabled);
 
-            GameLocation = (string)ReadSettings.Read(SettingTypes.GameLocation);
-            IsUsingGlobalIni = (bool)ReadSettings.Read(SettingTypes.IsUsingGlobalIni);
-            GlobalIniText = new TextDocument()
-            {
-                Text = (string)ReadSettings.Read(SettingTypes.GlobalIniText)
-            };
-        }
-
-        // Save settings on user exit.
-        ~SettingsViewModel()
-        {
-            Domain.SaveSettings.Apply();
+            var settings = GetSettings.ReturnAll();
+            GameLocation = settings.GameLocation;
+            UsingGlobalIni = settings.UsingGlobalIIni;
         }
 
         public void OpenIniHelp()
         {
-            var wikiURL = @"http://wiki.step-project.com/Guide:ENBlocal_INI";
-
-            Process.Start(wikiURL);
+            Process.Start(GetSettings.Return(SettingTypes.WikiUrl));
         }
 
-        public void SaveSettings()
+        public void SaveAllSettings()
         {
-            Domain.SaveSettings.Save(SettingTypes.GameLocation, GameLocation);
-            Domain.SaveSettings.Save(SettingTypes.IsUsingGlobalIni, IsUsingGlobalIni);
-            Domain.SaveSettings.Save(SettingTypes.GlobalIniText, GlobalIniText.Text);
+            SaveSettings.BatchSave(new SettingValues()
+            {
+                GameLocation = GameLocation,
+                UsingGlobalIIni = UsingGlobalIni
+            });
+        }
+
+        public bool SaveSettingsCommandEnabled()
+        {
+            return false;
         }
     }
 }

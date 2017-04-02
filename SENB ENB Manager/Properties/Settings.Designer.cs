@@ -25,36 +25,37 @@ namespace SENB_ENB_Manager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string GameLocation {
-            get {
-                return ((string)(this["GameLocation"]));
-            }
-            set {
-                this["GameLocation"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public bool IsUsingGlobalIni {
-            get {
-                return ((bool)(this["IsUsingGlobalIni"]));
-            }
-            set {
-                this["IsUsingGlobalIni"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("data\\enblocal.global")]
+        [global::System.Configuration.DefaultSettingValueAttribute("data\\global_enblocal.metherul")]
         public string GlobalIniLocation {
             get {
                 return ((string)(this["GlobalIniLocation"]));
             }
             set {
                 this["GlobalIniLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://wiki.step-project.com/Guide:ENBlocal_INI")]
+        public string WikiUrl {
+            get {
+                return ((string)(this["WikiUrl"]));
+            }
+            set {
+                this["WikiUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data\\settings.metherul")]
+        public string SettingsLocation {
+            get {
+                return ((string)(this["SettingsLocation"]));
+            }
+            set {
+                this["SettingsLocation"] = value;
             }
         }
     }

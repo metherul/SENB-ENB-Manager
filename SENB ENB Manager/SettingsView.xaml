@@ -68,7 +68,7 @@
                     <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Enable or disable the global enblocal.ini</Label>
                     <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                 </StackPanel>
-                <ToggleButton HorizontalAlignment="Right" IsChecked="{Binding IsUsingGlobalIni, Mode=TwoWay}"/>
+                <ToggleButton HorizontalAlignment="Right" IsChecked="{Binding UsingGlobalIni, Mode=TwoWay}"/>
                 <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Margin="0,0,40,0"
                         DataContext="{StaticResource DialogHandler}"
                         Command="{Binding ChangeVisibilityCommand}"

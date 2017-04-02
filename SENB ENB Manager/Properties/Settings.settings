@@ -2,14 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SENB_ENB_Manager.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="GameLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="IsUsingGlobalIni" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="GlobalIniLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">data\enblocal.global</Value>
+      <Value Profile="(Default)">data\global_enblocal.metherul</Value>
+    </Setting>
+    <Setting Name="WikiUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://wiki.step-project.com/Guide:ENBlocal_INI</Value>
+    </Setting>
+    <Setting Name="SettingsLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">data\settings.metherul</Value>
     </Setting>
   </Settings>
 </SettingsFile>
