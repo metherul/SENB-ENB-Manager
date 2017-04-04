@@ -67,6 +67,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -91,6 +93,7 @@
     <Compile Include="AddPresetView.xaml.cs">
       <DependentUpon>AddPresetView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddPresetViewModel.cs" />
     <Compile Include="DialogHandler.cs" />
     <Compile Include="Domain\Settings.cs" />
     <Compile Include="EditBinariesView.xaml.cs">
@@ -171,7 +174,6 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="settings.conf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

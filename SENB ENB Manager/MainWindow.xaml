@@ -15,9 +15,8 @@
         mc:Ignorable="d"
         Height="618"
         Width="408"
-        ResizeMode="NoResize"
         WindowStyle="None"
-        Title="SENB">
+        Title="SENB" ResizeMode="NoResize">
 
     <!-- All controls are overlays that are positioned underneath the main window header. The Stack Panel positions them in the correct spot. -->
     
@@ -52,7 +51,8 @@
             <!--Index 2 - Edit Binaries View Control, contains binary editing tools.-->
             <local:EditGlobalIniView />
             <!--Index 3 - Edit Global INI View, contains tools to edit the global ini.-->
+            <local:AddPresetView />
+            <!-- Index 4 - Add Preset View, contains tools to add an ENB preset.-->
         </materialDesign:Transitioner>
-
     </DockPanel>
 </Window>

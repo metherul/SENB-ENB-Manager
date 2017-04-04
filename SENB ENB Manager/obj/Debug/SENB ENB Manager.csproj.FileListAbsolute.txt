@@ -76,7 +76,6 @@ C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\Microsoft
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB ENB Manager.csprojResolveAssemblyReference.cache
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\EditGlobalIniView.baml
-C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\AddPresetView.g.cs
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\CardControl.g.cs
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\EditBinariesView.g.cs
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\EditGlobalIniView.g.cs
@@ -88,7 +87,6 @@ C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\Generated
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB ENB Manager_MarkupCompile.cache
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB ENB Manager_MarkupCompile.lref
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\App.baml
-C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\AddPresetView.baml
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\CardControl.baml
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\EditBinariesView.baml
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\MainView.baml
@@ -97,6 +95,8 @@ C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SettingsV
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB ENB Manager.g.resources
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB_ENB_Manager.Properties.Resources.resources
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB ENB Manager.csproj.GenerateResource.Cache
-C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB ENB Manager_Content.g.cs
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\Newtonsoft.Json.dll
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\Newtonsoft.Json.xml
+C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\AddPresetView.g.cs
+C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\AddPresetView.baml

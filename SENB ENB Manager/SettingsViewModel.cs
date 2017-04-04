@@ -1,29 +1,59 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using ICSharpCode.AvalonEdit.Document;
-using PropertyChanged;
 using SENB_ENB_Manager.Domain;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace SENB_ENB_Manager
 {
-    [ImplementPropertyChanged]
-    public class SettingsViewModel
+    // For this VM we have to impliment INotifyPropertyChanged manually. I know it sucks, but you can't really do anything about it.
+    // In the current implimentation the program will save when each value changes. Each setting is small, so I'm not expecting any issues to come out of this.
+    public class SettingsViewModel : INotifyPropertyChanged
     {
         public RelayCommand OpenIniHelpCommand { get; set; }
-        public RelayCommand SaveSettingsCommand { get; set; }
 
-        public string GameLocation { get; set; }
-        public bool UsingGlobalIni { get; set; }
+        private string gameLocation;
+        public string GameLocation
+        {
+            get { return gameLocation; }
+            set
+            {
+                gameLocation = value;
+                SaveSettings.Save(SettingTypes.GameLocation, value);
+                NotifyPropertyChanged();
+            }
+        }
+
+        private bool usingGlobalIni;
+        public bool UsingGlobalIni
+        {
+            get { return usingGlobalIni; }
+            set
+            {
+                usingGlobalIni = value;
+                SaveSettings.Save(SettingTypes.UsingGlobalIni, value);
+                NotifyPropertyChanged();
+            }
+        }
         public TextDocument GlobalIniText { get; set; }
 
         public SettingsViewModel()
         {
             OpenIniHelpCommand = new RelayCommand(OpenIniHelp);
-            SaveSettingsCommand = new RelayCommand(SaveAllSettings, SaveSettingsCommandEnabled);
 
             var settings = GetSettings.ReturnAll();
             GameLocation = settings.GameLocation;
             UsingGlobalIni = settings.UsingGlobalIIni;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         public void OpenIniHelp()
@@ -38,11 +68,6 @@ namespace SENB_ENB_Manager
                 GameLocation = GameLocation,
                 UsingGlobalIIni = UsingGlobalIni
             });
-        }
-
-        public bool SaveSettingsCommandEnabled()
-        {
-            return false;
         }
     }
 }

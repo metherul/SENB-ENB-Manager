@@ -8,79 +8,126 @@
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
              TextElement.FontWeight="Regular"
-             TextElement.FontSize="14"
+             TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              mc:Ignorable="d"
              d:DesignHeight="618" d:DesignWidth="408">
-    <Grid >
 
-        <StackPanel>
-            <!-- Header Text -->
-            <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Create Preset</Label>
+    <UserControl.DataContext>
+        <local:AddPresetViewModel/>
+    </UserControl.DataContext>
+    
+    <materialDesign:DialogHost DataContext="{StaticResource DialogHandler}" IsOpen="{Binding IsAddPresetViewVisible}" Margin="0,-0.3,0,0">
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Height="580" Width="398">
+                
+                <!-- Back Button -->
+                <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"
+                    DataContext="{StaticResource DialogHandler}"
+                    Command="{Binding ChangeVisibilityCommand}"
+                    CommandParameter="AddPresetView">
+                    <materialDesign:PackIcon Kind="Close" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
+                </Button>
 
-            <!-- Instruction Text -->
-            <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Put something here that describes what the heck is going on with this dialog box</TextBlock>
+                <!-- Save Button -->
+                <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top"
+                        DataContext="{StaticResource SettingsViewModel}" Command="{Binding OpenIniHelpCommand}">
+                    <materialDesign:PackIcon Kind="ContentSave" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
+                </Button>
 
-        </StackPanel>
+                <StackPanel>
+                    <!-- Header Text -->
+                    <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Add Preset</Label>
 
-        <Grid Margin="0,100,0,0">
-            <TreeView Width="Auto" Margin="5">
-                <TreeViewItem>
-                    <TreeViewItem.Header>
-                        <Grid>
-                            <CheckBox></CheckBox>
-                            <Label Margin="20,0,0,0">Test</Label>
-                        </Grid>
-                    </TreeViewItem.Header>
-                    <Grid>
-                        <CheckBox></CheckBox>
-                        <Label Margin="20,0,0,0">Some Item</Label>
-                    </Grid>
-                    <Grid>
-                        <CheckBox></CheckBox>
-                        <Label Margin="20,0,0,0">Some Other Item</Label>
-                    </Grid>
-                    <TreeViewItem>
-                        <TreeViewItem.Header>
-                            <Grid>
-                                <CheckBox></CheckBox>
-                                <Label Margin="20,0,0,0">Directory 2</Label>
-                            </Grid>
-                        </TreeViewItem.Header>
-                        <Grid>
-                            <CheckBox></CheckBox>
-                            <Label Margin="20,0,0,0">Files that go in it</Label>
-                        </Grid>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <Grid>
-                                    <CheckBox></CheckBox>
-                                    <Label Margin="20,0,0,0">Directory 3</Label>
-                                </Grid>
-                            </TreeViewItem.Header>
-                            <Grid>
-                                <CheckBox></CheckBox>
-                                <Label Margin="20,0,0,0">Oh jeez this is a bit bigger than I thought</Label>
-                            </Grid>
-                            <TreeViewItem>
-                                <TreeViewItem.Header>
+                    <!-- Instruction Text -->
+                    <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Lorem ipsum dolor sit amet, eum decore alterum accommodare id.</TextBlock>
+
+                    <!-- Preset Name Option -->
+                    <!-- TODO: Add Binding -->
+                    <StackPanel Margin="20,0">
+                        <Label HorizontalAlignment="Center" FontSize="18">Preset Name</Label>
+                        <TextBox Margin="25,0" Text="{Binding GameLocation, Mode=TwoWay}"></TextBox>
+                        <Border Padding="0,0,0,10" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="5,5,5,0" />
+                    </StackPanel>
+
+                    <!-- Preset Description Option -->
+                    <!-- TODO: Add Binding -->
+                    <StackPanel Margin="20,0">
+                        <Label HorizontalAlignment="Center" FontSize="18">Preset Name</Label>
+                        <Border Padding="0,0,0,10" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="5,5,5,0" />
+                    </StackPanel>
+
+                    <!-- Add Files Box --><!--
+                    <StackPanel Margin="5">
+                        <GroupBox Grid.Column="1" Grid.Row="1" Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="8">
+                            <GroupBox.HeaderTemplate>
+                                <DataTemplate>
                                     <Grid>
-                                        <CheckBox></CheckBox>
-                                        <Label Margin="20,0,0,0">Directory 4</Label>
+                                        <materialDesign:PackIcon Kind="File" Height="32" Width="32" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock Margin="38,0,0,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Add Files" HorizontalAlignment="Left"/>
+                                        <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" HorizontalContentAlignment="Center" Margin="0,0,8,0">
+                                            <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="22" Height="22"/>
+                                        </Button>
                                     </Grid>
-                                </TreeViewItem.Header>
-                                <Grid>
-                                    <CheckBox></CheckBox>
-                                    <Label Margin="20,0,0,0">That's alright, TreeViews have scrollbars!</Label>
-                                </Grid>
-                            </TreeViewItem>
-                        </TreeViewItem>
-                    </TreeViewItem>
-                </TreeViewItem>
-            </TreeView>
-        </Grid>
-
-    </Grid>
+                                </DataTemplate>
+                            </GroupBox.HeaderTemplate>
+                            
+                            <Grid Height="200">
+                                <ItemsControl DataContext="{StaticResource AddPresetViewModel}" ItemsSource="{Binding testCollection}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <CheckBox/>
+                                                <Label Content="{Binding Name}" Margin="20,0,0,0"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </GroupBox>
+                    </StackPanel>-->
+                </StackPanel>
+                
+                
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+    </materialDesign:DialogHost>
 </UserControl>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

@@ -9,6 +9,7 @@
             <local:DialogHandler x:Key="DialogHandler" />
             <local:MainWindowViewModel x:Key="MainWindowViewModel" />
             <local:SettingsViewModel x:Key="SettingsViewModel" />
+            <local:AddPresetViewModel x:Key="AddPresetViewModel" />
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
