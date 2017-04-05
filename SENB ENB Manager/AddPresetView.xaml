@@ -18,7 +18,7 @@
     <UserControl.DataContext>
         <local:AddPresetViewModel/>
     </UserControl.DataContext>
-    
+
     <materialDesign:DialogHost DataContext="{StaticResource DialogHandler}" IsOpen="{Binding IsAddPresetViewVisible}" Margin="0,-0.3,0,0">
         <materialDesign:DialogHost.DialogContent>
             <Grid Height="580" Width="398">
@@ -54,27 +54,29 @@
 
                     <!-- Preset Description Option -->
                     <!-- TODO: Add Binding -->
+                    <!-- TODO: Add Character limit -->
                     <StackPanel Margin="20,0">
-                        <Label HorizontalAlignment="Center" FontSize="18">Preset Name</Label>
+                        <Label HorizontalAlignment="Center" FontSize="18">Notes</Label>
+                        <TextBox Margin="25,0" Text="{Binding GameLocation, Mode=TwoWay}"></TextBox>
                         <Border Padding="0,0,0,10" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="5,5,5,0" />
                     </StackPanel>
 
-                    <!-- Add Files Box --><!--
+                     <!--Add Files Box--> 
                     <StackPanel Margin="5">
-                        <GroupBox Grid.Column="1" Grid.Row="1" Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="8">
+                        <GroupBox Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="8">
                             <GroupBox.HeaderTemplate>
                                 <DataTemplate>
                                     <Grid>
-                                        <materialDesign:PackIcon Kind="File" Height="32" Width="32" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <materialDesign:PackIcon Kind="File" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                         <TextBlock Margin="38,0,0,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Add Files" HorizontalAlignment="Left"/>
-                                        <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" HorizontalContentAlignment="Center" Margin="0,0,8,0">
-                                            <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="22" Height="22"/>
+                                        <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" HorizontalContentAlignment="Center" Margin="0,0,8,0">
+                                            <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="25"/>
                                         </Button>
                                     </Grid>
                                 </DataTemplate>
                             </GroupBox.HeaderTemplate>
                             
-                            <Grid Height="200">
+                            <Grid Height="265">
                                 <ItemsControl DataContext="{StaticResource AddPresetViewModel}" ItemsSource="{Binding testCollection}">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
@@ -87,7 +89,7 @@
                                 </ItemsControl>
                             </Grid>
                         </GroupBox>
-                    </StackPanel>-->
+                    </StackPanel>
                 </StackPanel>
                 
                 

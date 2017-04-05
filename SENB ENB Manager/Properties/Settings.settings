@@ -3,13 +3,19 @@
   <Profiles />
   <Settings>
     <Setting Name="GlobalIniLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">data\global_enblocal.metherul</Value>
+      <Value Profile="(Default)">data\global_enblocal.ini</Value>
     </Setting>
     <Setting Name="WikiUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://wiki.step-project.com/Guide:ENBlocal_INI</Value>
     </Setting>
     <Setting Name="SettingsLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)">data\settings.metherul</Value>
+      <Value Profile="(Default)">data\settings.ini</Value>
+    </Setting>
+    <Setting Name="PresetInfoFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)">pInfo.ini</Value>
+    </Setting>
+    <Setting Name="PresetDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">data\presets\</Value>
     </Setting>
   </Settings>
 </SettingsFile>

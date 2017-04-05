@@ -25,7 +25,7 @@ namespace SENB_ENB_Manager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("data\\global_enblocal.metherul")]
+        [global::System.Configuration.DefaultSettingValueAttribute("data\\global_enblocal.ini")]
         public string GlobalIniLocation {
             get {
                 return ((string)(this["GlobalIniLocation"]));
@@ -49,13 +49,37 @@ namespace SENB_ENB_Manager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("data\\settings.metherul")]
+        [global::System.Configuration.DefaultSettingValueAttribute("data\\settings.ini")]
         public string SettingsLocation {
             get {
                 return ((string)(this["SettingsLocation"]));
             }
             set {
                 this["SettingsLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("pInfo.ini")]
+        public string PresetInfoFile {
+            get {
+                return ((string)(this["PresetInfoFile"]));
+            }
+            set {
+                this["PresetInfoFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data\\presets\\")]
+        public string PresetDirectory {
+            get {
+                return ((string)(this["PresetDirectory"]));
+            }
+            set {
+                this["PresetDirectory"] = value;
             }
         }
     }

@@ -18,6 +18,8 @@ namespace SENB_ENB_Manager
         public MainWindow()
         {
             InitializeComponent();
+
+            var testDirectory = new Classes.Directory(@"C:\Programming\C# Projects\-ARCHIVE");
         }
 
         private void CloseWindow_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();

@@ -97,6 +97,5 @@ C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB_ENB_
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\SENB ENB Manager.csproj.GenerateResource.Cache
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\Newtonsoft.Json.dll
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\Newtonsoft.Json.xml
-C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\ICSharpCode.AvalonEdit.dll
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\AddPresetView.g.cs
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\AddPresetView.baml
