@@ -94,11 +94,11 @@
       <DependentUpon>AddPresetView.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddPresetViewModel.cs" />
-    <Compile Include="Classes\FileTree.cs" />
+    <Compile Include="Model\FileTree.cs" />
     <Compile Include="DialogHandler.cs" />
     <Compile Include="Classes\Preset.cs" />
-    <Compile Include="Domain\PresetManager.cs" />
-    <Compile Include="Domain\Settings.cs" />
+    <Compile Include="Model\PresetManager.cs" />
+    <Compile Include="Model\Settings.cs" />
     <Compile Include="EditBinariesView.xaml.cs">
       <DependentUpon>EditBinariesView.xaml</DependentUpon>
     </Compile>

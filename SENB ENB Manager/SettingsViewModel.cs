@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using ICSharpCode.AvalonEdit.Document;
-using SENB_ENB_Manager.Domain;
+using SENB_ENB_Manager.Model;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;

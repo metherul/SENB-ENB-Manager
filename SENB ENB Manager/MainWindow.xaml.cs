@@ -1,5 +1,5 @@
 ﻿using ICSharpCode.AvalonEdit.Document;
-using SENB_ENB_Manager.Domain;
+using SENB_ENB_Manager.Model;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -18,8 +18,6 @@ namespace SENB_ENB_Manager
         public MainWindow()
         {
             InitializeComponent();
-
-            var testDirectory = new Classes.Directory(@"C:\Programming\C# Projects\-ARCHIVE");
         }
 
         private void CloseWindow_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();

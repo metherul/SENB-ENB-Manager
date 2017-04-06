@@ -2,7 +2,7 @@
 using SENB_ENB_Manager.Properties;
 using System.IO;
 
-namespace SENB_ENB_Manager.Domain
+namespace SENB_ENB_Manager.Model
 {
     public static class SaveSettings
     {
@@ -48,6 +48,7 @@ namespace SENB_ENB_Manager.Domain
             else if (type == SettingTypes.UsingGlobalIni)
                 return (bool)jsonObject["UsingGlobalIni"];
 
+            // This will legit never happen. Shut up.
             return null;
         }
 

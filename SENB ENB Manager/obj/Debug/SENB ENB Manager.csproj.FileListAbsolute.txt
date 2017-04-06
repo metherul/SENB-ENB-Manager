@@ -99,3 +99,4 @@ C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\Newtonsof
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\Newtonsoft.Json.xml
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\AddPresetView.g.cs
 C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\obj\Debug\AddPresetView.baml
+C:\Programming\C# Projects\SENB-ENB-Manager\SENB ENB Manager\bin\Debug\ICSharpCode.AvalonEdit.dll

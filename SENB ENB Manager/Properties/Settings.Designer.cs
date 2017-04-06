@@ -82,5 +82,17 @@ namespace SENB_ENB_Manager.Properties {
                 this["PresetDirectory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data\\~temp")]
+        public string TempDirectory {
+            get {
+                return ((string)(this["TempDirectory"]));
+            }
+            set {
+                this["TempDirectory"] = value;
+            }
+        }
     }
 }

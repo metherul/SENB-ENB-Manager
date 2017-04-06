@@ -14,7 +14,6 @@
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-
     
     <!-- 
         TODO: 
