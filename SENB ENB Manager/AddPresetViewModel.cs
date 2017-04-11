@@ -18,7 +18,27 @@ namespace SENB_ENB_Manager
             testCollection = new ObservableCollection<TestClass>()
             {
                 new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test2"}
+                new TestClass() {Name = "Test2"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Test"},
+                new TestClass() {Name = "Testfinal"},
+
             };
         }
     }

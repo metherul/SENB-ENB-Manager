@@ -96,7 +96,7 @@
     <Compile Include="AddPresetViewModel.cs" />
     <Compile Include="Model\FileTree.cs" />
     <Compile Include="DialogHandler.cs" />
-    <Compile Include="Classes\Preset.cs" />
+    <Compile Include="Model\Preset.cs" />
     <Compile Include="Model\PresetManager.cs" />
     <Compile Include="Model\Settings.cs" />
     <Compile Include="EditBinariesView.xaml.cs">

@@ -46,20 +46,24 @@
 
                     <!-- Preset Name Option -->
                     <!-- TODO: Add Binding -->
-                    <StackPanel Margin="20,0">
-                        <Label HorizontalAlignment="Center" FontSize="18">Preset Name</Label>
-                        <TextBox Margin="25,0" Text="{Binding GameLocation, Mode=TwoWay}"></TextBox>
-                        <Border Padding="0,0,0,10" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="5,5,5,0" />
-                    </StackPanel>
+                    <Grid Margin="20,0">
+                        <StackPanel Height="Auto" >
+                            <Label FontSize="15" Margin="0,5,0,-5">Preset Name</Label>
+                            <TextBox></TextBox>
+                            <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                        </StackPanel>
+                    </Grid>
 
                     <!-- Preset Description Option -->
                     <!-- TODO: Add Binding -->
                     <!-- TODO: Add Character limit -->
-                    <StackPanel Margin="20,0">
-                        <Label HorizontalAlignment="Center" FontSize="18">Notes</Label>
-                        <TextBox Margin="25,0" Text="{Binding GameLocation, Mode=TwoWay}"></TextBox>
-                        <Border Padding="0,0,0,10" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="5,5,5,0" />
-                    </StackPanel>
+                    <Grid Margin="20,0">
+                        <StackPanel Height="Auto" >
+                            <Label FontSize="15" Margin="0,5,0,-5">Preset Description</Label>
+                            <TextBox></TextBox>
+                            <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                        </StackPanel>
+                    </Grid>
 
                      <!--Add Files Box--> 
                     <StackPanel Margin="5">
@@ -75,18 +79,20 @@
                                     </Grid>
                                 </DataTemplate>
                             </GroupBox.HeaderTemplate>
-                            
-                            <Grid Height="265">
-                                <ItemsControl DataContext="{StaticResource AddPresetViewModel}" ItemsSource="{Binding testCollection}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid>
-                                                <CheckBox/>
-                                                <Label Content="{Binding Name}" Margin="20,0,0,0"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
+
+                            <Grid Height="303">
+                                <ScrollViewer>
+                                    <ItemsControl DataContext="{StaticResource AddPresetViewModel}" ItemsSource="{Binding testCollection}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <CheckBox/>
+                                                    <Label Content="{Binding Name}" Margin="20,0,0,0"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </ScrollViewer>
                             </Grid>
                         </GroupBox>
                     </StackPanel>
