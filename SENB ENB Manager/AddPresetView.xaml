@@ -37,68 +37,83 @@
                     <materialDesign:PackIcon Kind="ContentSave" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
                 </Button>
 
-                <StackPanel>
-                    <!-- Header Text -->
-                    <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Add Preset</Label>
+                <materialDesign:Transitioner SelectedIndex="0">
 
-                    <!-- Instruction Text -->
-                    <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Lorem ipsum dolor sit amet, eum decore alterum accommodare id.</TextBlock>
+                    <!-- First Installation Slide: Adding Files. -->
+                    <materialDesign:TransitionerSlide>
+                        <StackPanel>
+                            <!-- Header Text -->
+                            <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Add Preset</Label>
 
-                    <!-- Preset Name Option -->
-                    <!-- TODO: Add Binding -->
-                    <Grid Margin="20,0">
-                        <StackPanel Height="Auto" >
-                            <Label FontSize="15" Margin="0,5,0,-5">Preset Name</Label>
-                            <TextBox></TextBox>
-                            <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
-                        </StackPanel>
-                    </Grid>
+                            <!-- Instruction Text -->
+                            <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Lorem ipsum dolor sit amet, eum decore alterum accommodare id.</TextBlock>
 
-                    <!-- Preset Description Option -->
-                    <!-- TODO: Add Binding -->
-                    <!-- TODO: Add Character limit -->
-                    <Grid Margin="20,0">
-                        <StackPanel Height="Auto" >
-                            <Label FontSize="15" Margin="0,5,0,-5">Preset Description</Label>
-                            <TextBox></TextBox>
-                            <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
-                        </StackPanel>
-                    </Grid>
-
-                     <!--Add Files Box--> 
-                    <StackPanel Margin="5">
-                        <GroupBox Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="8">
-                            <GroupBox.HeaderTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <materialDesign:PackIcon Kind="File" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                        <TextBlock Margin="38,0,0,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Add Files" HorizontalAlignment="Left"/>
-                                        <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" HorizontalContentAlignment="Center" Margin="0,0,8,0">
-                                            <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="25"/>
-                                        </Button>
-                                    </Grid>
-                                </DataTemplate>
-                            </GroupBox.HeaderTemplate>
-
-                            <Grid Height="303">
-                                <ScrollViewer>
-                                    <ItemsControl DataContext="{StaticResource AddPresetViewModel}" ItemsSource="{Binding testCollection}">
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <Grid>
-                                                    <CheckBox/>
-                                                    <Label Content="{Binding Name}" Margin="20,0,0,0"/>
-                                                </Grid>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </ScrollViewer>
+                            <!-- Preset Name Option -->
+                            <!-- TODO: Add Binding -->
+                            <!--
+                            <Grid Margin="20,0">
+                                <StackPanel Height="Auto" >
+                                    <Label FontSize="15" Margin="0,5,0,-5">Preset Name</Label>
+                                    <TextBox></TextBox>
+                                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                                </StackPanel>
                             </Grid>
-                        </GroupBox>
-                    </StackPanel>
-                </StackPanel>
+
+                            -->
+                                    <!-- Preset Description Option -->
+                                    <!-- TODO: Add Binding -->
+                                    <!-- TODO: Add Character limit -->
+                                    <!--
+                            <Grid Margin="20,0">
+                                <StackPanel Height="Auto" >
+                                    <Label FontSize="15" Margin="0,5,0,-5">Preset Description</Label>
+                                    <TextBox></TextBox>
+                                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                                </StackPanel>
+                            </Grid>-->
+
+                            <!--Add Files Box-->
+                            <StackPanel Margin="5">
+                                <GroupBox Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="8">
+                                    <GroupBox.HeaderTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <materialDesign:PackIcon Kind="File" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                                <TextBlock Margin="38,0,0,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Add Files" HorizontalAlignment="Left"/>
+                                                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" HorizontalContentAlignment="Center" Margin="0,0,8,0">
+                                                    <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="25"/>
+                                                </Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GroupBox.HeaderTemplate>
+
+                                    <Grid Height="303">
+                                        <ScrollViewer>
+                                            <ItemsControl DataContext="{StaticResource AddPresetViewModel}" ItemsSource="{Binding testCollection}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <CheckBox IsChecked="{Binding IsChecked}"/>
+                                                            <Label Content="{Binding Name}" Margin="20,0,0,0"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </GroupBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </materialDesign:TransitionerSlide>
                 
+                    
+                </materialDesign:Transitioner>
+
                 
+
+
+
+
             </Grid>
         </materialDesign:DialogHost.DialogContent>
     </materialDesign:DialogHost>

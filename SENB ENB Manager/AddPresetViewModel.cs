@@ -1,4 +1,5 @@
-﻿using PropertyChanged;
+﻿using GalaSoft.MvvmLight.Command;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,33 +13,17 @@ namespace SENB_ENB_Manager
     public class AddPresetViewModel
     {
         public ObservableCollection<TestClass> testCollection { get; set; }
+        public RelayCommand NextCommand { get; set; }
 
         public AddPresetViewModel()
         {
             testCollection = new ObservableCollection<TestClass>()
             {
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test2"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Test"},
-                new TestClass() {Name = "Testfinal"},
-
+                new TestClass() {Name = "Test", IsChecked = false},
+                new TestClass() {Name = "Test", IsChecked = true},
+                new TestClass() {Name = "Test", IsChecked = false},
+                new TestClass() {Name = "Test", IsChecked = true},
+                new TestClass() {Name = "Test", IsChecked = true},
             };
         }
     }
@@ -47,5 +32,6 @@ namespace SENB_ENB_Manager
     public class TestClass
     {
         public string Name { get; set; }
+        public bool IsChecked { get; set; }
     }
 }
