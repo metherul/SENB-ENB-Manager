@@ -15,10 +15,13 @@
       <Value Profile="(Default)">pInfo.ini</Value>
     </Setting>
     <Setting Name="PresetDirectory" Type="System.String" Scope="User">
-      <Value Profile="(Default)">data\presets\</Value>
+      <Value Profile="(Default)">data\presets</Value>
     </Setting>
     <Setting Name="TempDirectory" Type="System.String" Scope="User">
       <Value Profile="(Default)">data\~temp</Value>
+    </Setting>
+    <Setting Name="FilterLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">data\enbfilter.ini</Value>
     </Setting>
   </Settings>
 </SettingsFile>

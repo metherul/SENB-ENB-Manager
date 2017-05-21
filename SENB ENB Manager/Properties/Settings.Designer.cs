@@ -73,7 +73,7 @@ namespace SENB_ENB_Manager.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("data\\presets\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("data\\presets")]
         public string PresetDirectory {
             get {
                 return ((string)(this["PresetDirectory"]));
@@ -92,6 +92,18 @@ namespace SENB_ENB_Manager.Properties {
             }
             set {
                 this["TempDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("data\\enbfilter.ini")]
+        public string FilterLocation {
+            get {
+                return ((string)(this["FilterLocation"]));
+            }
+            set {
+                this["FilterLocation"] = value;
             }
         }
     }

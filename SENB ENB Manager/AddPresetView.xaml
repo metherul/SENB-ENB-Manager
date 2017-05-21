@@ -33,7 +33,7 @@
 
                 <!-- Save Button -->
                 <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top"
-                        DataContext="{StaticResource SettingsViewModel}" Command="{Binding OpenIniHelpCommand}">
+                        DataContext="{StaticResource AddPresetViewModel}" Command="{Binding AddPresetCommand}"> <!-- TODO: ADD BINDING-->
                     <materialDesign:PackIcon Kind="ContentSave" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
                 </Button>
 
@@ -48,32 +48,29 @@
                             <!-- Instruction Text -->
                             <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Lorem ipsum dolor sit amet, eum decore alterum accommodare id.</TextBlock>
 
-                            <!-- Preset Name Option -->
-                            <!-- TODO: Add Binding -->
-                            <!--
+                             <!--Preset Name Option 
+                             TODO: Add Binding-->
                             <Grid Margin="20,0">
                                 <StackPanel Height="Auto" >
                                     <Label FontSize="15" Margin="0,5,0,-5">Preset Name</Label>
-                                    <TextBox></TextBox>
+                                    <TextBox DataContext="{StaticResource AddPresetViewModel}" Text="{Binding PresetName}"></TextBox>
                                     <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                                 </StackPanel>
                             </Grid>
 
-                            -->
-                                    <!-- Preset Description Option -->
-                                    <!-- TODO: Add Binding -->
-                                    <!-- TODO: Add Character limit -->
-                                    <!--
+                            <!--Preset Description Option 
+                             TODO: Add Binding 
+                             TODO: Add Character limit--> 
                             <Grid Margin="20,0">
                                 <StackPanel Height="Auto" >
                                     <Label FontSize="15" Margin="0,5,0,-5">Preset Description</Label>
-                                    <TextBox></TextBox>
+                                    <TextBox DataContext="{StaticResource AddPresetViewModel}" Text="{Binding PresetDescription}"></TextBox>
                                     <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                                 </StackPanel>
-                            </Grid>-->
-
+                            </Grid>
+    
                             <!--Add Files Box-->
-                            <StackPanel Margin="5">
+                            <!--<StackPanel Margin="2">
                                 <GroupBox Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="8">
                                     <GroupBox.HeaderTemplate>
                                         <DataTemplate>
@@ -88,32 +85,38 @@
                                     </GroupBox.HeaderTemplate>
 
                                     <Grid Height="303">
-                                        <ScrollViewer>
-                                            <ItemsControl DataContext="{StaticResource AddPresetViewModel}" ItemsSource="{Binding testCollection}">
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Grid>
-                                                            <CheckBox IsChecked="{Binding IsChecked}"/>
-                                                            <Label Content="{Binding Name}" Margin="20,0,0,0"/>
-                                                        </Grid>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
+                                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
+                                            <DataGrid Margin="0,0,0,0" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                                                      materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                                                      DataContext="{StaticResource AddPresetViewModel}"
+                                                      ItemsSource="{Binding FileCollection}" Background="{StaticResource MaterialDesignBackground}">
+                                                <DataGrid.Columns>
+
+                                                    <DataGridCheckBoxColumn ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
+
+                                                        <DataGridCheckBoxColumn.Header>
+                                                            <Border Background="Transparent" Padding="6 0 6 0" HorizontalAlignment="Center">
+                                                                <CheckBox HorizontalAlignment="Center"                                               
+                                                                          IsChecked="{Binding IsChecked}" />
+                                                            </Border>
+                                                        </DataGridCheckBoxColumn.Header>
+                                                    </DataGridCheckBoxColumn>
+
+                                                    <DataGridTextColumn Binding="{Binding Path}"
+                                                                        Header="Path"
+                                                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+
+                                                </DataGrid.Columns>
+                                            </DataGrid>
                                         </ScrollViewer>
                                     </Grid>
                                 </GroupBox>
-                            </StackPanel>
+                            </StackPanel>-->
                         </StackPanel>
                     </materialDesign:TransitionerSlide>
-                
-                    
+
                 </materialDesign:Transitioner>
-
-                
-
-
-
-
             </Grid>
         </materialDesign:DialogHost.DialogContent>
     </materialDesign:DialogHost>

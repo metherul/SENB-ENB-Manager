@@ -1,0 +1,6 @@
+User MINDFLUX created (still wip, but available for download) fix for transparent objects
+which do not work properly with ENBSeries as their properties are wrong. For example
+some water particles glow in the night, doors looks transparent with ssao.
+
+Here is the topic with download link to that fix
+http://enbseries.enbdev.com/forum/viewtopic.php?f=6&t=1499

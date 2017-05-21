@@ -1,37 +1,34 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using PropertyChanged;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SENB_ENB_Manager.Model;
+using System.Threading;
 
 namespace SENB_ENB_Manager
 {
     [ImplementPropertyChanged]
     public class AddPresetViewModel
     {
-        public ObservableCollection<TestClass> testCollection { get; set; }
-        public RelayCommand NextCommand { get; set; }
+        public string PresetName { get; set; }
+        public string PresetDescription { get; set; }
+        public RelayCommand AddPresetCommand { get; set; }
 
         public AddPresetViewModel()
         {
-            testCollection = new ObservableCollection<TestClass>()
-            {
-                new TestClass() {Name = "Test", IsChecked = false},
-                new TestClass() {Name = "Test", IsChecked = true},
-                new TestClass() {Name = "Test", IsChecked = false},
-                new TestClass() {Name = "Test", IsChecked = true},
-                new TestClass() {Name = "Test", IsChecked = true},
-            };
+            AddPresetCommand = new RelayCommand(AddPreset);
         }
+
+        public void AddPreset()
+        {
+            PresetManager.SavePreset(PresetName, PresetDescription);
+        }
+
+        // Send the preset to the PresetManager Model, which will create and save the preset. 
+        // Pass along the ObservableCollection
     }
 
-    [ImplementPropertyChanged]
-    public class TestClass
+    public class SelectionFile
     {
-        public string Name { get; set; }
-        public bool IsChecked { get; set; }
+        public string Path;
+        public bool IsSelected;
     }
 }

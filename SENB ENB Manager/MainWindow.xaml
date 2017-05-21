@@ -19,6 +19,7 @@
         Title="SENB" ResizeMode="NoResize">
 
     <!-- All controls are overlays that are positioned underneath the main window header. The Stack Panel positions them in the correct spot. -->
+    <!-- Height=618, Width=408 -->
     
     <DockPanel>
         <!-- Window Header Color -->
