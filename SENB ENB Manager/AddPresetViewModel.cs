@@ -2,6 +2,7 @@
 using PropertyChanged;
 using SENB_ENB_Manager.Model;
 using System.Threading;
+using MaterialDesignThemes.Wpf;
 
 namespace SENB_ENB_Manager
 {

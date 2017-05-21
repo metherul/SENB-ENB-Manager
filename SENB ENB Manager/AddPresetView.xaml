@@ -27,6 +27,7 @@
                 <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"
                     DataContext="{StaticResource DialogHandler}"
                     Command="{Binding ChangeVisibilityCommand}"
+                        
                     CommandParameter="AddPresetView">
                     <materialDesign:PackIcon Kind="Close" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
                 </Button>

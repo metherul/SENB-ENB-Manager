@@ -19,16 +19,9 @@ namespace SENB_ENB_Manager.Model
             var filteredDirectories = new List<string>();
 
             // Check to see if the presetDirectory exists. If it does, delete it and create a new one.
-            if (Directory.Exists(presetLocation))
-            {
-                DeleteDirectory(presetLocation);
-            }
+            if (Directory.Exists(presetLocation)) DeleteDirectory(presetLocation);
 
-            while (!Directory.Exists(presetLocation))
-            {
-                Directory.CreateDirectory(presetLocation);
-            }
-
+            while (!Directory.Exists(presetLocation)) Directory.CreateDirectory(presetLocation);
 
             // Get the list of enbFilters
             var enbFilter = File.ReadAllLines(enbFilterLocation);

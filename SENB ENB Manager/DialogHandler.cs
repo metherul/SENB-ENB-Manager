@@ -10,9 +10,9 @@ namespace SENB_ENB_Manager
         
         // Long names, I know.
         // They each enable their respective dialogs. 
-        public bool IsEditBinariesViewVisible { get; set; }
-        public bool IsEditGlobalIniViewVisible { get; set; }
-        public bool IsAddPresetViewVisible { get; set; }
+        public static bool IsEditBinariesViewVisible { get; set; }
+        public static bool IsEditGlobalIniViewVisible { get; set; }
+        public static bool IsAddPresetViewVisible { get; set; }
 
         public DialogHandler()
         {
