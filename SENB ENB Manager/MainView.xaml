@@ -31,27 +31,39 @@
                             CommandParameter="SettingsView">
                     <materialDesign:PackIcon Kind="Settings" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Top" />
                 </Button>
+
+                <!-- Open Game Location Button -->
+                <Button Style="{StaticResource MaterialDesignToolButton}"
+                        DataContext="{StaticResource MainViewViewModel}" Command="{Binding OpenGameDirectoryCommand}"
+                        VerticalAlignment="Center" HorizontalAlignment="Right" Width="50" Height="40" Margin="0,0,48,0">
+                    <materialDesign:PackIcon Kind="Folder" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                </Button>
             </Grid>
         </materialDesign:ColorZone>
 
         <!-- Add preset button. -->
         <Button Style="{StaticResource MaterialDesignFloatingActionAccentButton}" Height="47" Width="47"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1" Margin="10,26,0,0"
-                    DataContext="{StaticResource DialogHandler}"
-                    Command="{Binding ChangeVisibilityCommand}"
-                    CommandParameter="AddPresetView">
+                    DataContext="{StaticResource AddPresetViewModel}"
+                    Command="{Binding PresetDialogCommand}">
             <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" />
         </Button>
 
-        <ScrollViewer Height="539" VerticalScrollBarVisibility="Hidden" Padding="0,20,0,0">
-            <ItemsControl ItemsSource="{Binding Cards}">
+        <ScrollViewer Height="539" VerticalScrollBarVisibility="Hidden" Padding="0,40,0,0">
+            <ItemsControl x:Name="RootDataContext" DataContext="{StaticResource AddPresetViewModel}" ItemsSource="{Binding Presets}" Padding="0,0,0,0">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <local:CardControl></local:CardControl>
+                        <local:CardControl />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+
+        <TextBlock Margin="20,100,20,0" FontSize="20" Foreground="Gray" TextWrapping="Wrap" 
+                   TextAlignment="Center" FontFamily="Roboto" 
+                   DataContext="{StaticResource AddPresetViewModel}"
+                   Visibility="{Binding IsHintVisible, Converter={StaticResource BoolToVisibility}}">You don't have any ENBs, add one using the button on the top left! 
+            <LineBreak/><materialDesign:PackIcon Kind="Webhook" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="80" Foreground="Gray" Margin="0,0,0,0"/></TextBlock>
 
     </Grid>
 </UserControl>

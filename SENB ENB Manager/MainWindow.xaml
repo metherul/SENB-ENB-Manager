@@ -20,40 +20,47 @@
 
     <!-- All controls are overlays that are positioned underneath the main window header. The Stack Panel positions them in the correct spot. -->
     <!-- Height=618, Width=408 -->
+
+    <Grid>
+        <DockPanel>
+            <!-- Window Header Color -->
+            <materialDesign:ColorZone Mode="PrimaryDark" Height="Auto" MouseDown="ColorZone_MouseDown" DockPanel.Dock="Top">
+                <Grid>
+                    <!-- Close Window Button -->
+                    <Button Style="{StaticResource MaterialDesignToolButton}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="25" Width="25" Click="CloseWindow_Click">
+                        <materialDesign:PackIcon Kind="WindowClose" Foreground="{DynamicResource MaterialDesignPaper}" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+
+                    <!-- Minimize Window Button -->
+                    <Button Style="{StaticResource MaterialDesignToolButton}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="25" Width="25" Margin="0,5,21,-5" Click="MinimizeWindow_Click">
+                        <materialDesign:PackIcon Kind="WindowMinimize" Foreground="{DynamicResource MaterialDesignPaper}" Width="17" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Button>
+                </Grid>
+            </materialDesign:ColorZone>
+
+            <!-- Main View Manager for the application. -->
+            <!-- Add a bit of a negative margin to remove the white line. -->
+            <!-- The selected index will be bound to the MainWindowViewModel, and handled in code. -->
+            <materialDesign:Transitioner Margin="0,-1,0,0"
+                                         DataContext="{StaticResource TransitionHandler}"
+                                         SelectedIndex="{Binding CurrentViewIndex}">
+
+                <local:MainView />
+                <!--Index 0 - Main View Control, contains preset cards.-->
+                <local:SettingsView />
+                <!--Index 1 - Settings View Control, contains application settings.-->
+                <local:EditBinariesView />
+                <!--Index 2 - Edit Binaries View Control, contains binary editing tools.-->
+                <local:EditGlobalIniView />
+                <!--Index 3 - Edit Global INI View, contains tools to edit the global ini.-->
+                <local:AddPresetView />
+                <!-- Index 4 - Add Preset View, contains tools to add an ENB preset.-->
+            </materialDesign:Transitioner>
+        </DockPanel>
+
+        <!-- Overlay for the dialogs in the application -->
+        <materialDesign:DialogHost Identifier="RootDialog" />
+    </Grid>
     
-    <DockPanel>
-        <!-- Window Header Color -->
-        <materialDesign:ColorZone Mode="PrimaryDark" Height="Auto" MouseDown="ColorZone_MouseDown" DockPanel.Dock="Top">
-            <Grid>
-                <!-- Close Window Button -->
-                <Button Style="{StaticResource MaterialDesignToolButton}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="25" Width="25" Click="CloseWindow_Click">
-                    <materialDesign:PackIcon Kind="WindowClose" Foreground="{DynamicResource MaterialDesignPaper}" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Button>
-
-                <!-- Minimize Window Button -->
-                <Button Style="{StaticResource MaterialDesignToolButton}" VerticalAlignment="Top" HorizontalAlignment="Right" Height="25" Width="25" Margin="0,5,21,-5" Click="MinimizeWindow_Click">
-                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="{DynamicResource MaterialDesignPaper}" Width="17" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </Button>
-            </Grid>
-        </materialDesign:ColorZone>
-
-        <!-- Main View Manager for the application. -->
-        <!-- Add a bit of a negative margin to remove the white line. -->
-        <!-- The selected index will be bound to the MainWindowViewModel, and handled in code. -->
-        <materialDesign:Transitioner Margin="0,-1,0,0"
-                                     DataContext="{StaticResource TransitionHandler}"
-                                     SelectedIndex="{Binding CurrentViewIndex}">
-
-            <local:MainView />
-            <!--Index 0 - Main View Control, contains preset cards.-->
-            <local:SettingsView />
-            <!--Index 1 - Settings View Control, contains application settings.-->
-            <local:EditBinariesView />
-            <!--Index 2 - Edit Binaries View Control, contains binary editing tools.-->
-            <local:EditGlobalIniView />
-            <!--Index 3 - Edit Global INI View, contains tools to edit the global ini.-->
-            <local:AddPresetView />
-            <!-- Index 4 - Add Preset View, contains tools to add an ENB preset.-->
-        </materialDesign:Transitioner>
-    </DockPanel>
+    
 </Window>

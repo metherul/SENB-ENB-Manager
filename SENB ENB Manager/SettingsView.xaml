@@ -29,6 +29,7 @@
     
     <Grid>
         <StackPanel>
+            
             <!-- UI Header and Back Button -->
             <materialDesign:ColorZone Mode="PrimaryMid" Height="50">
                 <Grid>
@@ -37,6 +38,12 @@
                             Command="{Binding ChangeViewCommand}"
                             CommandParameter="MainView">
                         <materialDesign:PackIcon Kind="ArrowLeft" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" />
+                    </Button>
+
+                    <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0,0,5,0" 
+                            DataContext="{StaticResource SettingsViewModel}"
+                            Command="{Binding SaveSettingsCommand}">
+                        <materialDesign:PackIcon Kind="ContentSaveAll" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="Auto" />
                     </Button>
                 </Grid>
             </materialDesign:ColorZone>
@@ -48,8 +55,10 @@
             <StackPanel Margin="20,0">
                 <Label HorizontalAlignment="Center" FontSize="18">Game Directory</Label>
                 <Grid>
-                    <TextBox Margin="25,0" Text="{Binding GameLocation, Mode=TwoWay}"></TextBox>
-                    <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Width="23" VerticalContentAlignment="Bottom" >
+                    <TextBox Margin="25,0" DataContext="{StaticResource SettingsViewModel}"  Text="{Binding GameLocation, Mode=TwoWay}"></TextBox>
+                    <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Width="23" VerticalContentAlignment="Bottom" 
+                            DataContext="{StaticResource SettingsViewModel}"
+                            Command="{Binding OpenFileBrowserCommand}">
                         <materialDesign:PackIcon Kind="DotsHorizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0" Height="23" Width="23" />
                     </Button>
                 </Grid>
@@ -59,21 +68,19 @@
             <!-- Setting - Use Global Enblocal.ini -->
             <Grid Margin="20,0">
                 <StackPanel Height="Auto" >
-                    <Label FontSize="18" Margin="0,5,0,-5">Use Global Enblocal.ini</Label>
-                    <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Enable or disable the global enblocal.ini</Label>
+                    <Label FontSize="18" Margin="0,5,0,-5">Edit Global Enblocal.ini</Label>
+                    <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Edit the global enb</Label>
                     <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                 </StackPanel>
-                <ToggleButton HorizontalAlignment="Right" IsChecked="{Binding UsingGlobalIni, Mode=TwoWay}"/>
-                <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Margin="0,0,40,0"
-                        DataContext="{StaticResource DialogHandler}"
-                        Command="{Binding ChangeVisibilityCommand}"
-                        CommandParameter="EditGlobalIniView">
+                <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Margin="0,0,9,0"
+                        DataContext="{StaticResource SettingsViewModel}"
+                        Command="{Binding EditGlobalIniCommand}">
                     <materialDesign:PackIcon Kind="Pencil" Height="Auto" Width="30"/>
                 </Button>
             </Grid>
 
             <!-- Setting - Edit ENB Binaries -->
-            <Grid Margin="20,0">
+            <!--<Grid Margin="20,0">
                 <StackPanel Height="Auto" >
                     <Label FontSize="18" Margin="0,5,0,-5">Edit ENB binaries</Label>
                     <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Add and remove the stored ENB binaries.</Label>
@@ -81,16 +88,16 @@
                 </StackPanel>
                 <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Height="Auto" Width="60"
                         DataContext="{StaticResource DialogHandler}"
-                        Command="{Binding ChangeVisibilityCommand}"
-                        CommandParameter="EditBinariesView">
+                        Command="{Binding EditBinariesCommand}">
                     <materialDesign:PackIcon Kind="ChevronRight" Height="Auto" Width="30"/>
                 </Button>
-            </Grid>
+            </Grid>-->
 
         </StackPanel>
 
         <Grid Margin="5,0,5,5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Button>Endorse me on the Nexus!</Button>
         </Grid>
+        <Label Margin="5,0,5,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" Content="v1.0"/>
     </Grid>
 </UserControl>

@@ -13,10 +13,10 @@ namespace SENB_ENB_Manager.Model
             var jsonObject = JObject.Parse(settingsContents);
 
             if (type == SettingTypes.GameLocation)
-                jsonObject["GameLocation"] = (string)content;
+                jsonObject["GameLocation"] = (string) content;
 
-            else if (type == SettingTypes.UsingGlobalIni)
-                jsonObject["UsingGlobalIni"] = (bool)content;
+            if (type == SettingTypes.InstalledPreset)
+                jsonObject["InstalledPreset"] = (string) content;
 
             File.WriteAllText(settingsLocation, jsonObject.ToString());
         }
@@ -28,9 +28,13 @@ namespace SENB_ENB_Manager.Model
             var jsonObject = JObject.Parse(settingsContents);
 
             jsonObject["GameLocation"] = settingValues.GameLocation;
-            jsonObject["UsingGlobalIni"] = settingValues.UsingGlobalIIni;
 
             File.WriteAllText(settingsLocation, jsonObject.ToString());
+        }
+
+        public static void CreateSettings()
+        {
+            
         }
     }
 
@@ -43,10 +47,10 @@ namespace SENB_ENB_Manager.Model
             var jsonObject = JObject.Parse(settingsContents);
 
             if (type == SettingTypes.GameLocation)
-                return (string)jsonObject["GameLocation"];
+                return (string) jsonObject["GameLocation"];
 
-            else if (type == SettingTypes.UsingGlobalIni)
-                return (bool)jsonObject["UsingGlobalIni"];
+            if (type == SettingTypes.InstalledPreset)
+                return (string) jsonObject["InstalledPreset"];
 
             // This will legit never happen. Shut up.
             return null;
@@ -61,7 +65,6 @@ namespace SENB_ENB_Manager.Model
             var settingValues = new SettingValues()
             {
                 GameLocation = (string)jsonObject["GameLocation"],
-                UsingGlobalIIni = (bool)jsonObject["UsingGlobalIni"]
             };
 
             return settingValues;
@@ -71,14 +74,11 @@ namespace SENB_ENB_Manager.Model
     public class SettingValues
     {
         public string GameLocation;
-        public bool UsingGlobalIIni;
     }
 
     public enum SettingTypes
     {
         GameLocation,
-        UsingGlobalIni,
-        GlobalIniText,
-        WikiUrl
+        InstalledPreset
     }
 }

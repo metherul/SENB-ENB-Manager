@@ -1,70 +1,79 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using System;
+using GalaSoft.MvvmLight.Command;
 using ICSharpCode.AvalonEdit.Document;
 using SENB_ENB_Manager.Model;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using FolderSelect;
+using MaterialDesignThemes.Wpf;
+using PropertyChanged;
+using SENB_ENB_Manager.Properties;
 
 namespace SENB_ENB_Manager
 {
-    // For this VM we have to impliment INotifyPropertyChanged manually. I know it sucks, but you can't really do anything about it.
-    // In the current implimentation the program will save when each value changes. Each setting is small, so I'm not expecting any issues to come out of this.
-    public class SettingsViewModel : INotifyPropertyChanged
+    [ImplementPropertyChanged]
+    public class SettingsViewModel
     {
-        public RelayCommand OpenIniHelpCommand { get; set; }
+        public ICommand OpenIniHelpCommand => new CommandImplementation(OpenIniHelp);
+        public ICommand EditGlobalIniCommand => new CommandImplementation(OpenEditGlobalIniDialog);
+        public ICommand SaveSettingsCommand => new CommandImplementation(SaveSettings);
+        public ICommand OpenFileBrowserCommand => new CommandImplementation(OpenFileBrowser);
 
-        private string gameLocation;
-        public string GameLocation
-        {
-            get { return gameLocation; }
-            set
-            {
-                gameLocation = value;
-                SaveSettings.Save(SettingTypes.GameLocation, value);
-                NotifyPropertyChanged();
-            }
-        }
-
-        private bool usingGlobalIni;
-        public bool UsingGlobalIni
-        {
-            get { return usingGlobalIni; }
-            set
-            {
-                usingGlobalIni = value;
-                SaveSettings.Save(SettingTypes.UsingGlobalIni, value);
-                NotifyPropertyChanged();
-            }
-        }
+        public string GameLocation { get; set; }
         public TextDocument GlobalIniText { get; set; }
 
         public SettingsViewModel()
         {
-            OpenIniHelpCommand = new RelayCommand(OpenIniHelp);
-
+            var metaLocation = AppDomain.CurrentDomain.BaseDirectory;
+            var globalIniLocation = Path.Combine(metaLocation, Settings.Default.GlobalIniLocation);
             var settings = GetSettings.ReturnAll();
             GameLocation = settings.GameLocation;
-            UsingGlobalIni = settings.UsingGlobalIIni;
+            var globalIniFile = File.ReadAllText(globalIniLocation);
+            GlobalIniText = new TextDocument {Text = globalIniFile != "" ? globalIniFile : ""};
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        public void OpenIniHelp(object o)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Process.Start(Settings.Default.WikiUrl);
         }
 
-        public void OpenIniHelp()
+        public void SaveSettings(object o)
         {
-            Process.Start(GetSettings.Return(SettingTypes.WikiUrl));
-        }
-
-        public void SaveAllSettings()
-        {
-            SaveSettings.BatchSave(new SettingValues()
+            Model.SaveSettings.BatchSave(new SettingValues()
             {
-                GameLocation = GameLocation,
-                UsingGlobalIIni = UsingGlobalIni
+                GameLocation = GameLocation
             });
+        }
+
+        private void OpenFileBrowser(object o)
+        {
+            var fileDialog = new FolderSelectDialog
+            {
+                Title = "Game Directory",
+                InitialDirectory = @"C:\"
+            };
+
+            if (fileDialog.ShowDialog(IntPtr.Zero))
+            {
+                GameLocation = fileDialog.FileName;
+            }
+        }
+
+        private async void OpenEditGlobalIniDialog(object o)
+        {
+            var view = new EditGlobalIniView();
+            await DialogHost.Show(view, "RootDialog", CloseEditGlobalIniDialog);
+
+        }
+        private void CloseEditGlobalIniDialog(object sender, DialogClosingEventArgs eventargs)
+        {
+            var metaLocation = AppDomain.CurrentDomain.BaseDirectory;
+            var globalIniLocation = Path.Combine(metaLocation, Settings.Default.GlobalIniLocation);
+
+            File.WriteAllText(globalIniLocation, GlobalIniText.Text);
         }
     }
 }

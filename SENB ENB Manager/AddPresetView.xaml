@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:SENB_ENB_Manager"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              Background="{DynamicResource MaterialDesignPaper}"
              TextElement.FontWeight="Regular"
@@ -12,115 +13,64 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-             mc:Ignorable="d"
-             d:DesignHeight="618" d:DesignWidth="408">
+             mc:Ignorable="d">
 
     <UserControl.DataContext>
         <local:AddPresetViewModel/>
     </UserControl.DataContext>
+    <!-- W: 580, H:398 -->
+    <Grid Height="263" Width="299">
 
-    <materialDesign:DialogHost DataContext="{StaticResource DialogHandler}" IsOpen="{Binding IsAddPresetViewVisible}" Margin="0,-0.3,0,0">
-        <materialDesign:DialogHost.DialogContent>
-            <Grid Height="580" Width="398">
-                
-                <!-- Back Button -->
-                <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"
-                    DataContext="{StaticResource DialogHandler}"
-                    Command="{Binding ChangeVisibilityCommand}"
-                        
-                    CommandParameter="AddPresetView">
-                    <materialDesign:PackIcon Kind="Close" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
-                </Button>
+        <!-- Back Button -->
+        <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"
+                Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+            <Button.CommandParameter>
+                <system:Boolean>False</system:Boolean>
+            </Button.CommandParameter>
+            <materialDesign:PackIcon Kind="Close" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
+        </Button>
 
-                <!-- Save Button -->
-                <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top"
-                        DataContext="{StaticResource AddPresetViewModel}" Command="{Binding AddPresetCommand}"> <!-- TODO: ADD BINDING-->
-                    <materialDesign:PackIcon Kind="ContentSave" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
-                </Button>
+        <!-- Save Button -->
+        <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top"
+                DataContext="{StaticResource AddPresetViewModel}" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}">
+            <Button.CommandParameter>
+                <system:Boolean>True</system:Boolean>
+            </Button.CommandParameter>
+            <materialDesign:PackIcon Kind="ContentSave" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Width="25" Height="Auto"/>
+        </Button>
 
-                <materialDesign:Transitioner SelectedIndex="0">
+        <StackPanel>
+            <!-- Header Text -->
+            <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Add Preset</Label>
 
-                    <!-- First Installation Slide: Adding Files. -->
-                    <materialDesign:TransitionerSlide>
-                        <StackPanel>
-                            <!-- Header Text -->
-                            <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Add Preset</Label>
+            <!-- Instruction Text -->
+            <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Save an ENB preset from the game directory.</TextBlock>
 
-                            <!-- Instruction Text -->
-                            <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Lorem ipsum dolor sit amet, eum decore alterum accommodare id.</TextBlock>
-
-                             <!--Preset Name Option 
-                             TODO: Add Binding-->
-                            <Grid Margin="20,0">
-                                <StackPanel Height="Auto" >
-                                    <Label FontSize="15" Margin="0,5,0,-5">Preset Name</Label>
-                                    <TextBox DataContext="{StaticResource AddPresetViewModel}" Text="{Binding PresetName}"></TextBox>
-                                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
-                                </StackPanel>
-                            </Grid>
-
-                            <!--Preset Description Option 
-                             TODO: Add Binding 
-                             TODO: Add Character limit--> 
-                            <Grid Margin="20,0">
-                                <StackPanel Height="Auto" >
-                                    <Label FontSize="15" Margin="0,5,0,-5">Preset Description</Label>
-                                    <TextBox DataContext="{StaticResource AddPresetViewModel}" Text="{Binding PresetDescription}"></TextBox>
-                                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
-                                </StackPanel>
-                            </Grid>
-    
-                            <!--Add Files Box-->
-                            <!--<StackPanel Margin="2">
-                                <GroupBox Style="{DynamicResource MaterialDesignCardGroupBox}" Margin="8">
-                                    <GroupBox.HeaderTemplate>
-                                        <DataTemplate>
-                                            <Grid>
-                                                <materialDesign:PackIcon Kind="File" Height="25" Width="25" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                                <TextBlock Margin="38,0,0,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Add Files" HorizontalAlignment="Left"/>
-                                                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" HorizontalContentAlignment="Center" Margin="0,0,8,0">
-                                                    <materialDesign:PackIcon Kind="Plus" Foreground="{DynamicResource MaterialDesignPaper}" Width="25" Height="25"/>
-                                                </Button>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </GroupBox.HeaderTemplate>
-
-                                    <Grid Height="303">
-                                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible">
-                                            <DataGrid Margin="0,0,0,0" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
-                                                      materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="8"
-                                                      DataContext="{StaticResource AddPresetViewModel}"
-                                                      ItemsSource="{Binding FileCollection}" Background="{StaticResource MaterialDesignBackground}">
-                                                <DataGrid.Columns>
-
-                                                    <DataGridCheckBoxColumn ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-                                                                            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}">
-
-                                                        <DataGridCheckBoxColumn.Header>
-                                                            <Border Background="Transparent" Padding="6 0 6 0" HorizontalAlignment="Center">
-                                                                <CheckBox HorizontalAlignment="Center"                                               
-                                                                          IsChecked="{Binding IsChecked}" />
-                                                            </Border>
-                                                        </DataGridCheckBoxColumn.Header>
-                                                    </DataGridCheckBoxColumn>
-
-                                                    <DataGridTextColumn Binding="{Binding Path}"
-                                                                        Header="Path"
-                                                                        EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-
-                                                </DataGrid.Columns>
-                                            </DataGrid>
-                                        </ScrollViewer>
-                                    </Grid>
-                                </GroupBox>
-                            </StackPanel>-->
-                        </StackPanel>
-                    </materialDesign:TransitionerSlide>
-
-                </materialDesign:Transitioner>
+            <Grid Margin="20,0">
+                <StackPanel Height="Auto" >
+                    <Label FontSize="15" Margin="0,5,0,-5">Preset Name</Label>
+                    <TextBox DataContext="{StaticResource AddPresetViewModel}" Text="{Binding PresetName}" MaxLength="47">
+                    </TextBox>
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                </StackPanel>
             </Grid>
-        </materialDesign:DialogHost.DialogContent>
-    </materialDesign:DialogHost>
+
+            <Grid Margin="20,0">
+                <StackPanel Height="Auto" >
+                    <Label FontSize="15" Margin="0,5,0,-5">Preset Description</Label>
+                    <TextBox DataContext="{StaticResource AddPresetViewModel}" Text="{Binding PresetDescription}" TextWrapping="NoWrap" MaxLength="108"></TextBox>
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="20,0,20,0">
+                <StackPanel Height="Auto" >
+                    <CheckBox FontSize="15" Height="40" Margin="0,5,0,5" DataContext="{StaticResource AddPresetViewModel}" IsChecked="{Binding UsingGlobalIni}">Use Global enblocal.ini</CheckBox>
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
 </UserControl>
 
     

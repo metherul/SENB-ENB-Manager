@@ -1,36 +1,25 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿using MaterialDesignThemes.Wpf;
 using PropertyChanged;
+using SENB_ENB_Manager.Model;
+using System.Windows.Input;
 
 namespace SENB_ENB_Manager
 {
     [ImplementPropertyChanged]
     public class DialogHandler
     {
-        public RelayCommand<object> ChangeVisibilityCommand { get; set; }
-        
-        // Long names, I know.
-        // They each enable their respective dialogs. 
-        public static bool IsEditBinariesViewVisible { get; set; }
-        public static bool IsEditGlobalIniViewVisible { get; set; }
-        public static bool IsAddPresetViewVisible { get; set; }
+        public ICommand EditBinariesCommand => new CommandImplementation(OpenEditBinariesDialog);
 
-        public DialogHandler()
+        private async void OpenEditBinariesDialog(object o)
         {
-            ChangeVisibilityCommand = new RelayCommand<object>(ChangeVisibility);
+            var view = new EditBinariesView();
+            await DialogHost.Show(view, "RootDialog", CloseEditBinariesDialog);
+        }
+        private void CloseEditBinariesDialog(object sender, DialogClosingEventArgs eventargs)
+        {
+            
         }
 
-        public void ChangeVisibility(object parameter)
-        {
-            var view = parameter.ToString();
 
-            if (view == "EditBinariesView")
-                IsEditBinariesViewVisible = !IsEditBinariesViewVisible;
-
-            else if (view == "EditGlobalIniView")
-                IsEditGlobalIniViewVisible = !IsEditGlobalIniViewVisible;
-
-            else if (view == "AddPresetView")
-                IsAddPresetViewVisible = !IsAddPresetViewVisible;
-        }
     }
 }

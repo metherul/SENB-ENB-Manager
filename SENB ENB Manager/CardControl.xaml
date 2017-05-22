@@ -14,49 +14,52 @@
              FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <!-- 
         TODO: 
         Hook up enb context menu so it displays all installed binaries.
-        Hook up install button and go through with installation process
         Hook up context menu so that it displays "edit" and "delete".
     -->
     <materialDesign:Card Height="120" Margin="5,5,5,2">
         <Grid>
             <StackPanel>
                 <Grid>
-                    <Label FontSize="17" Content="{Binding Name}" Margin="0,0,25,0" />
-                    <materialDesign:PackIcon Kind="Check" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" />
+                    <Label FontSize="17" Content="{Binding Name}" Margin="0,0,25,0"/>
+                    <materialDesign:PackIcon Kind="Check" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Visibility="{Binding IsInstalled, Converter={StaticResource BoolToVisibility}}"/>
                 </Grid>
                 <Border Padding="0" BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="5,0" />
-                <TextBlock Margin="5,5,5,0" Height="33" Text="{Binding Description}" FontSize="12" TextWrapping="WrapWithOverflow" />
+                <TextBlock Margin="5,5,5,0" Height="33" Text="{Binding Description}" FontSize="12" TextWrapping="Wrap"/>
             </StackPanel>
 
             <materialDesign:ColorZone Height="40" Mode="PrimaryMid" VerticalAlignment="Bottom">
                 <Grid>
-                    <Label Foreground="{DynamicResource MaterialDesignPaper}" VerticalAlignment="Center" Width="Auto" Margin="5,7,0,7">
-                        Enb Version:
-                    </Label>
-                    <ComboBox HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,0,0,0" Width="70">
-                        <ComboBoxItem Content="v0.308" IsSelected="True" />
-                        <ComboBoxItem Content="v0.292" />
-                        <ComboBoxItem Content="v0.262" />
-                        <ComboBoxItem Content="v0.236" />
-                        <ComboBoxItem Content="v0.221" />
-                        <ComboBoxItem Content="v0.168" />
-                        <ComboBoxItem Content="v0.132" />
-                    </ComboBox>
+                    <!--<Label Foreground="{DynamicResource MaterialDesignPaper}" VerticalAlignment="Center" Width="Auto" Margin="5,7,0,7" Content="Enb Version:"/>-->
+                    <Label Foreground="{DynamicResource MaterialDesignPaper}" VerticalAlignment="Center" Width="Auto" Margin="5,7,0,7" Content="{Binding BinaryVersion}"/>
 
-                    <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Height="Auto" Margin="0,6,30,4">
-                        <materialDesign:PackIcon Kind="Download" Foreground="{DynamicResource MaterialDesignPaper}" Height="Auto" Width="Auto" />
+                    <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Height="Auto" Margin="0,6,35,4" 
+                            CommandParameter="{Binding Name}"
+                            Command="{Binding ElementName=RootDataContext,  Path=DataContext.InstallPresetCommand}">
+                        <materialDesign:PackIcon Kind="{Binding IconType}" Foreground="{DynamicResource MaterialDesignPaper}" Height="Auto" Width="Auto" />
                     </Button>
 
-                    <Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Height="30" Margin="0,0,5,0">
+                    <!--<Button Style="{StaticResource MaterialDesignToolButton}" HorizontalAlignment="Right" Height="30" Margin="0,0,5,0">
                         <materialDesign:PackIcon Kind="DotsVertical" Foreground="{DynamicResource MaterialDesignPaper}" Height="Auto" Width="Auto" />
-                    </Button>
+                    </Button>-->
+
+                    <materialDesign:PopupBox HorizontalAlignment="Right" StaysOpen="True" VerticalContentAlignment="Center">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" Padding="0,0,0,0" Width="Auto"
+                                CommandParameter="{Binding Name}"
+                                Command="{Binding ElementName=RootDataContext,  Path=DataContext.UninstallPresetCommand}">
+                            <Grid Width="80" Height="Auto">
+                                <materialDesign:PackIcon Kind="Delete" HorizontalAlignment="Left" Margin="5,0,5,0" VerticalAlignment="Center"/>
+                                <Label HorizontalAlignment="Right" Margin="5,0,7,0" VerticalAlignment="Center" >Delete</Label>
+                            </Grid>
+                        </Button>
+                    </materialDesign:PopupBox>
+
                 </Grid>
             </materialDesign:ColorZone>
         </Grid>
     </materialDesign:Card>
-    
+
 </UserControl>

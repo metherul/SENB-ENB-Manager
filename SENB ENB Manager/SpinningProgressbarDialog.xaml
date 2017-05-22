@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="SENB_ENB_Manager.SpinningProgressbarDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SENB_ENB_Manager"
+             mc:Ignorable="d" >
+    <ProgressBar Width="24" Height="24" Margin="9"
+                 Style="{DynamicResource MaterialDesignCircularProgressBar}"
+                 Background="Transparent"
+                 IsIndeterminate="True"
+                 Value="0"/>
+</UserControl>
