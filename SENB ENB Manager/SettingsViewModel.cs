@@ -1,16 +1,14 @@
-﻿using System;
-using GalaSoft.MvvmLight.Command;
+﻿using FolderSelect;
 using ICSharpCode.AvalonEdit.Document;
-using SENB_ENB_Manager.Model;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using FolderSelect;
 using MaterialDesignThemes.Wpf;
 using PropertyChanged;
+using SENB_ENB_Manager.Model;
 using SENB_ENB_Manager.Properties;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Windows.Input;
+using Microsoft.Win32;
 
 namespace SENB_ENB_Manager
 {
@@ -21,6 +19,7 @@ namespace SENB_ENB_Manager
         public ICommand EditGlobalIniCommand => new CommandImplementation(OpenEditGlobalIniDialog);
         public ICommand SaveSettingsCommand => new CommandImplementation(SaveSettings);
         public ICommand OpenFileBrowserCommand => new CommandImplementation(OpenFileBrowser);
+        public ICommand EndoreMeCommand => new CommandImplementation(EndorseMe);
 
         public string GameLocation { get; set; }
         public TextDocument GlobalIniText { get; set; }
@@ -29,10 +28,21 @@ namespace SENB_ENB_Manager
         {
             var metaLocation = AppDomain.CurrentDomain.BaseDirectory;
             var globalIniLocation = Path.Combine(metaLocation, Settings.Default.GlobalIniLocation);
-            var settings = GetSettings.ReturnAll();
-            GameLocation = settings.GameLocation;
             var globalIniFile = File.ReadAllText(globalIniLocation);
             GlobalIniText = new TextDocument {Text = globalIniFile != "" ? globalIniFile : ""};
+
+            GameLocation = GetSettings.Return(SettingTypes.GameLocation);
+
+            if (GameLocation != "") return;
+
+            var regKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Bethesda Softworks\Skyrim");
+            if (regKey != null)
+            {
+                var value = (string) regKey.GetValue("Installed Path");
+
+                GameLocation = value;
+            }
+            Model.SaveSettings.Save(SettingTypes.GameLocation, GameLocation);
         }
 
         public void OpenIniHelp(object o)
@@ -61,6 +71,12 @@ namespace SENB_ENB_Manager
                 GameLocation = fileDialog.FileName;
             }
         }
+
+        private void EndorseMe(object o)
+        {
+            Process.Start("http://www.nexusmods.com/skyrim/mods/84060?");
+        }
+
 
         private async void OpenEditGlobalIniDialog(object o)
         {

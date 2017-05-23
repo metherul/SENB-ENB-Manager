@@ -12,6 +12,7 @@ namespace SENB_ENB_Manager
         public ICommand PresetDialogCommand => new CommandImplementation(OpenPresetDialog);
         public ICommand InstallPresetCommand => new CommandImplementation(InstallPreset);
         public ICommand UninstallPresetCommand => new CommandImplementation(UninstallPreset);
+        public ICommand CleanGameDirectoryCommand => new CommandImplementation(CleanGameDirectory);
         public ObservableCollection<PresetData> Presets { get; set; }
 
         public string PresetName { get; set; }
@@ -72,6 +73,12 @@ namespace SENB_ENB_Manager
             Presets = new ObservableCollection<PresetData>(PresetManager.GetPresets());
 
             IsHintVisible = Presets.Count <= 0;
+        }
+
+        private void CleanGameDirectory(object o)
+        {
+            PresetManager.CleanGameDirectory(true);
+            Presets = new ObservableCollection<PresetData>(PresetManager.GetPresets());
         }
     }
 

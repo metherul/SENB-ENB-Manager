@@ -25,7 +25,8 @@ namespace SENB_ENB_Manager.Model
             {"v0221", "EF2B6E7165EE3B541BFA806D39F3D38C"},
             {"v0236", "BE0AE396224E172603B170143DA58D6D"},
             {"v0262", "1E18C7F483355C04C650BC701F009276"},
-            {"v0102", "4F3277DCCE171FD8A5D505675D6BF029"}
+            {"v0102", "4F3277DCCE171FD8A5D505675D6BF029"},
+            {"v0279", ""}
 
         };
 
@@ -43,7 +44,8 @@ namespace SENB_ENB_Manager.Model
             {"v.0292", "922112"},
             {"v.0308", "925696"},
             {"v.121212", "493056"},
-            {"v.13713", "809472"}
+            {"v.13713", "809472"},
+            {"v.0297", "913408"}
         };
 
         private static string GetHash(string path)
@@ -57,7 +59,7 @@ namespace SENB_ENB_Manager.Model
             }
         }
 
-        private static string GetFileSize(string path)
+        public static string GetFileSize(string path)
         {
             return new FileInfo(path).Length.ToString();
         }

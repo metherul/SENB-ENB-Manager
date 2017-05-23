@@ -68,14 +68,27 @@
             <!-- Setting - Use Global Enblocal.ini -->
             <Grid Margin="20,0">
                 <StackPanel Height="Auto" >
-                    <Label FontSize="18" Margin="0,5,0,-5">Edit Global Enblocal.ini</Label>
-                    <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Edit the global enb</Label>
+                    <Label FontSize="18" Margin="0,5,0,-5">Edit Global .ini</Label>
+                    <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Edit the global enblocal.ini file.</Label>
                     <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
                 </StackPanel>
                 <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Margin="0,0,9,0"
                         DataContext="{StaticResource SettingsViewModel}"
                         Command="{Binding EditGlobalIniCommand}">
                     <materialDesign:PackIcon Kind="Pencil" Height="Auto" Width="30"/>
+                </Button>
+            </Grid>
+
+            <Grid Margin="20,0">
+                <StackPanel Height="Auto" >
+                    <Label FontSize="18" Margin="0,5,0,-5">Clean</Label>
+                    <Label FontSize="13" IsEnabled="False" Margin="0,0,0,5">Remove all ENB files from the game directory.</Label>
+                    <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource MaterialDesignDivider}" />
+                </StackPanel>
+                <Button HorizontalAlignment="Right" Style="{StaticResource MaterialDesignToolButton}" Height="Auto" Width="60"
+                        DataContext="{StaticResource AddPresetViewModel}"
+                        Command="{Binding CleanGameDirectoryCommand}">
+                    <materialDesign:PackIcon Kind="ChevronRight" Height="Auto" Width="30"/>
                 </Button>
             </Grid>
 
@@ -96,8 +109,8 @@
         </StackPanel>
 
         <Grid Margin="5,0,5,5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button>Endorse me on the Nexus!</Button>
+            <Button DataContext="{StaticResource SettingsViewModel}" Command="{Binding EndoreMeCommand}">Endorse me on the Nexus!</Button>
         </Grid>
-        <Label Margin="5,0,5,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" Content="v1.0"/>
+        <Label Margin="5,0,5,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" Content="v1.0B"/>
     </Grid>
 </UserControl>

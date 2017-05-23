@@ -188,7 +188,7 @@ namespace SENB_ENB_Manager.Model
             }
         }
 
-        public static void CleanGameDirectory()
+        public static void CleanGameDirectory(bool removeSettingsValue = false)
         {
             var metaLocation = AppDomain.CurrentDomain.BaseDirectory;
             var filterList = File.ReadLines(Path.Combine(metaLocation, Settings.Default.FilterLocation));
@@ -207,6 +207,11 @@ namespace SENB_ENB_Manager.Model
                 {
                     Directory.Delete(tempPath, true);
                 }
+            }
+
+            if (removeSettingsValue)
+            {
+                SaveSettings.Save(SettingTypes.InstalledPreset, "");
             }
         }
 

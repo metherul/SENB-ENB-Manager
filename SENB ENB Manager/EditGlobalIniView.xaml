@@ -33,7 +33,7 @@
             <Label HorizontalAlignment="Center" Margin="0,0,0,5" FontSize="29">Global .ini</Label>
 
             <!-- Instruction Text -->
-            <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Paste or edit the .ini file you would like to install for all presets.</TextBlock>
+            <TextBlock FontSize="13" TextWrapping="Wrap" Margin="5,0,5,10" TextAlignment="Center">Paste or edit global enblocal.ini file.</TextBlock>
 
         </StackPanel>
 

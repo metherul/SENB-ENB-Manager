@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("settings.conf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webhook_t5g_icon.ico")]
 
 
