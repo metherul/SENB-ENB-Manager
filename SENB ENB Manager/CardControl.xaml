@@ -47,16 +47,38 @@
                     </Button>-->
 
                     <materialDesign:PopupBox HorizontalAlignment="Right" StaysOpen="True" VerticalContentAlignment="Center">
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" Padding="0,0,0,0" Width="Auto"
-                                CommandParameter="{Binding Name}"
-                                Command="{Binding ElementName=RootDataContext,  Path=DataContext.UninstallPresetCommand}">
-                            <Grid Width="80" Height="Auto">
-                                <materialDesign:PackIcon Kind="Delete" HorizontalAlignment="Left" Margin="5,0,5,0" VerticalAlignment="Center"/>
-                                <Label HorizontalAlignment="Right" Margin="5,0,7,0" VerticalAlignment="Center" >Delete</Label>
-                            </Grid>
-                        </Button>
+                        <StackPanel Width="120">
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Padding="0,0,0,0" Width="Auto"
+                                    CommandParameter="{Binding Name}"
+                                    Command="{Binding ElementName=RootDataContext,  Path=DataContext.SyncPresetCommand}">
+                                <Button.ToolTip>
+                                    Sync preset with game directory.
+                                </Button.ToolTip>
+                                <Grid Width="80" Height="Auto">
+                                    <materialDesign:PackIcon Kind="Sync" HorizontalAlignment="Left" Margin="-8,0,5,0" VerticalAlignment="Center"/>
+                                    <Separator HorizontalAlignment="Left" Margin="10,0,5,0" >
+                                        <Separator.LayoutTransform>
+                                            <RotateTransform Angle="90" />
+                                        </Separator.LayoutTransform>
+                                    </Separator>
+                                    <Label HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" FontWeight="Normal">Sync</Label>
+                                </Grid>
+                            </Button>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Padding="0,0,0,0" Width="Auto"
+                                    CommandParameter="{Binding Name}"
+                                    Command="{Binding ElementName=RootDataContext,  Path=DataContext.UninstallPresetCommand}">
+                                <Grid Width="80" Height="Auto">
+                                    <materialDesign:PackIcon Kind="Delete" HorizontalAlignment="Left" Margin="-8,0,5,0" VerticalAlignment="Center"/>
+                                    <Separator HorizontalAlignment="Left" Margin="10,0,5,0" >
+                                        <Separator.LayoutTransform>
+                                            <RotateTransform Angle="90" />
+                                        </Separator.LayoutTransform>
+                                    </Separator>
+                                    <Label HorizontalAlignment="Center" Margin="20,0,0,0" VerticalAlignment="Center" FontWeight="Normal">Delete</Label>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
                     </materialDesign:PopupBox>
-
                 </Grid>
             </materialDesign:ColorZone>
         </Grid>

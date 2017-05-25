@@ -111,6 +111,6 @@
         <Grid Margin="5,0,5,5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <Button DataContext="{StaticResource SettingsViewModel}" Command="{Binding EndoreMeCommand}">Endorse me on the Nexus!</Button>
         </Grid>
-        <Label Margin="5,0,5,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" Content="v1.0B"/>
+        <Label Margin="5,0,5,5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="Gray" Content="v1.06B"/>
     </Grid>
 </UserControl>

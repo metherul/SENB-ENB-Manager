@@ -1,8 +1,0 @@
-//+++++++++++++++++++++++++++++++++++++++++++++++
-// ENGLISH
-//+++++++++++++++++++++++++++++++++++++++++++++++
-Extract files from folder WrapperVersion or InjectorVersion to your game folder.
-If you wish to use injector version as workaround for various third party software
-and for laptops, run ENBInjector.exe before starting the game.
-WARNING! Don't run manually enbhost.exe, it will be automatically started if memory
-manager activated in enblocal.ini.

@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webhook_t5g_icon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("webhook__1__c8b_icon.ico")]
 
 

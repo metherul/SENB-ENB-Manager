@@ -91,10 +91,11 @@ namespace SENB_ENB_Manager.Model
             var directories = Directory.GetDirectories(presetsDirectory).OrderBy(d => new FileInfo(d).CreationTime);
             var presetsList = new List<PresetData>();
 
-            foreach (var dir in directories)
+            foreach (var dir in directories.Where(x => File.Exists(Path.Combine(presetsDirectory, x, "meta.ini"))))
             {
                 var presetName = new DirectoryInfo(dir).Name;
-                var metaFileContents = File.ReadAllText(Path.Combine(presetsDirectory, presetName, "meta.ini"));
+                var metaFileLocation = Path.Combine(presetsDirectory, presetName, "meta.ini");
+                var metaFileContents = File.ReadAllText(metaFileLocation);
                 var jsonObject = JObject.Parse(metaFileContents);
                 var presetDescription = (string)jsonObject["Description"];
                 var binaryVersion = (string)jsonObject["BinaryVersion"];
@@ -215,15 +216,43 @@ namespace SENB_ENB_Manager.Model
             }
         }
 
+        public static void SyncPreset(string presetName)
+        {
+            var metaLocation = AppDomain.CurrentDomain.BaseDirectory;
+            var gameDirectory = GetSettings.Return(SettingTypes.GameLocation);
+            var presetLocation = Path.Combine(metaLocation, Settings.Default.PresetDirectory, presetName);
+            var filterList = File.ReadAllLines(Path.Combine(metaLocation, Settings.Default.FilterLocation));
+            var presetFiles = Directory.GetFiles(presetLocation).Where(x => new FileInfo(x).Name != "meta.ini").ToList();
+            var presetDirectories = Directory.GetDirectories(presetLocation).ToList();
+            var dateCreated = Directory.GetCreationTime(presetLocation); // Make sure to set this back
+
+            // Copy and replace all files from the game location into the preset location
+            foreach (var item in filterList)
+            {
+                var tempPath = Path.Combine(gameDirectory, item);
+
+                if (File.Exists(tempPath))
+                {
+                    File.Copy(Path.Combine(gameDirectory, item), Path.Combine(presetLocation, new FileInfo(item).Name), true);
+                }
+
+                if (Directory.Exists(tempPath))
+                {
+                    DirCopyTo(Path.Combine(gameDirectory, item), Path.Combine(presetLocation, new FileInfo(item).Name));
+                }
+            }
+        }
+
         private static void DirMoveTo(string source, string destination)
         {
             var destinationDirectory = Path.Combine(destination, new DirectoryInfo(source).Name);
-            Directory.Move(source, destinationDirectory);
+            DirCopyTo(source, destinationDirectory);
+            DeleteDirectory(source);
         }
 
         private static void DirCopyTo(string source, string destination)
         {
-            new Microsoft.VisualBasic.Devices.Computer().FileSystem.CopyDirectory(source, destination);
+            new Microsoft.VisualBasic.Devices.Computer().FileSystem.CopyDirectory(source, destination, true);
         }
 
         private static void DeleteDirectory(string path)
